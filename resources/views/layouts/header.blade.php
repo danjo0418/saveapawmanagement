@@ -62,7 +62,7 @@
                                 @guest
                                     <li><a href="{{ URL::to('/') }}">Home</a></li>
                                 @else
-                                    @if(Auth::user()->role_id == 2)
+                                    @if(Auth::user()->role_id == 3)
                                         <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
                                         <li class="dropdown">
                                             <a href="javascript:void(0)">Pets</a>
@@ -80,14 +80,6 @@
                                         <li class="dropdown">
                                             <a href="{{ URL::to('notifications') }}">Notifications</a>
                                             <ul>
-                                                <li>
-                                                    <a href="{{ URL::to('admin/users-verification') }}">
-                                                        Verify Users 
-                                                        <span class="badge badge-danger">
-                                                            {{ App\Modules\Helpers::countUnapprovedUser() }}
-                                                        </span>
-                                                    </a>
-                                                </li>
                                                 <li>
                                                     <a href="{{ URL::to('admin/pets-verification') }}">
                                                         Verify Pets 
@@ -119,7 +111,7 @@
                                     <li class="cstm_li"><a href=""><img class="avatar" src="{{ asset('asset/images/users/thumb/'.Auth::user()->profile) }}"></a></li>
                                     <li class="cstm_li dropdown"><a href="javascript:void(0)">{{ Auth::user()->email }} <span class="fa fa-sort-desc"></span></a>
                                         <ul>
-                                            @if(Auth::user()->role_id == 2)
+                                            @if(Auth::user()->role_id == 3)
                                                 <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                             @endif
                                             <li><a href=""><span class="fa fa-rss "></span> My Blogs</a></li>

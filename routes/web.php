@@ -22,11 +22,9 @@ Route::post('newregister', 'UserController@newRegister');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    //users view
-    Route::get('about-us', function () {
-        return view('user.about');
-    });
 
+    //users view
+    Route::get('about-us', 'UserController@about');
     Route::get('adopt', 'PetController@listOfAdopt');
     Route::get('lost-and-found', 'PetController@listOfLostAndFound');
     Route::get('pet/details/{id}', 'PetController@petDetails');
@@ -36,7 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('adoptForm', 'PetController@adoptForm');
     Route::post('claimForm', 'PetController@claimForm');
-
 
     //admin view
     Route::get('dashboard', function () {
@@ -56,13 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/users-form', 'UserController@userFormpage');
     Route::post('userCreate', 'UserController@userCreate');
     Route::post('status', 'UserController@userStatus');
-    Route::post('approved', 'UserController@userApproved');
-    Route::post('decline', 'UserController@userDeclined');
 
-
-   // Route::get('notifications', 'NotificationController@index');
     Route::get('admin/pets-verification', 'PetController@petVerification');
-    Route::get('admin/users-verification', 'UserController@userVerify');
     Route::get('admin/claim-pets', 'NotificationController@claimPets');
     Route::get('admin/adopt-pets', 'NotificationController@adoptPets');
     

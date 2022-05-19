@@ -7,11 +7,6 @@
                 <div class="pull-left">
                     <h1>Users Management</h1>
                 </div>
-                <div class="pull-right">
-                    <ul class="page-breadcrumb">
-                        <li><a href="{{ URL::to('admin/users-verification') }}">Verify Users<span class="badge badge-danger">{{ $countUnapproved }}</span></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -48,41 +43,39 @@
                 <div class="container">
                     @if(count($users) > 0)
                         @foreach($users as $user)
-                            @if($user->id != Auth::user()->id)
-                                <a href="{{ URL::to('admin/users-detail/'.$user->id) }}">
-                                    <article>
-                                        <div class="brows-job-list">
-                                            <div class="row">
-                                                <div class="col-lg-2 small-padding text-center">
-                                                    <div class="brows-job-company-img"><img src="{{ asset('asset/images/users/thumb/'.$user->profile) }}" class="img-responsive" alt=""></div>
-                                                </div>
-                                                <div class="col-lg-10">
-                                                    <div class="row">
-                                                        <div class="col-lg-11 mb-3">
-                                                            <div class="brows-job-position">
-                                                                <h3 class="mb-0">{{ $user->fname.' '.$user->mname.' '.$user->lname }}</h3>
-                                                                <span class="text-secondary"><i class="fa fa-map-marker"></i> {{ $user->address }}</span><br/>
-                                                                <small class="label text-primary">
-                                                                    @if($user->role_id == 1)
-                                                                        Administrator
-                                                                    @else
-                                                                        Users
-                                                                    @endif
-                                                                </small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-1">
-                                                            <p class="text-center">
-                                                                <i class="fa fa-circle {{ $user->status == 'active' ? "text-success":"text-danger" }}"></i>
-                                                            </p>
+                            <a href="{{ URL::to('admin/users-detail/'.$user->id) }}">
+                                <article>
+                                    <div class="brows-job-list">
+                                        <div class="row">
+                                            <div class="col-lg-2 small-padding text-center">
+                                                <div class="brows-job-company-img"><img src="{{ asset('asset/images/users/thumb/'.$user->profile) }}" class="img-responsive" alt=""></div>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <div class="row">
+                                                    <div class="col-lg-11 mb-3">
+                                                        <div class="brows-job-position">
+                                                            <h3 class="mb-0">{{ $user->fname.' '.$user->mname.' '.$user->lname }}</h3>
+                                                            <span class="text-secondary"><i class="fa fa-map-marker"></i> {{ $user->address }}</span><br/>
+                                                            <small class="label text-primary">
+                                                                @if($user->role_id == 2)
+                                                                    Administrator
+                                                                @else
+                                                                    Users
+                                                                @endif
+                                                            </small>
                                                         </div>
                                                     </div>
-                                                </div> 
-                                            </div>
+                                                    <div class="col-lg-1">
+                                                        <p class="text-center">
+                                                            <i class="fa fa-circle {{ $user->status == 'active' ? "text-success":"text-danger" }}"></i>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div> 
                                         </div>
-                                    </article>
-                                </a>
-                            @endif
+                                    </div>
+                                </article>
+                            </a>
                         @endforeach
                     @else
                         <div class="text-center">

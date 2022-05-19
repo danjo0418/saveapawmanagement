@@ -39,7 +39,7 @@ class UserController extends Controller
 
                 if(Auth::attempt($credential)) {
 
-                    if($user->role_id == 1) return Redirect::to('dashboard');
+                    if($user->role_id <= 2) return Redirect::to('dashboard');
                     else return Redirect::to('about-us');
 
                 } else  return redirect()->back()->with('invalid', 'These credentials do not match our records.');  
@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $request = request();
 
-        $data = [ 'role_id' => '2',
+        $data = [ 'role_id' => '3',
                   'email' => $request->email,
                   'password' => Hash::make($request->password),
                   'fname' => $request->fname,
@@ -64,8 +64,7 @@ class UserController extends Controller
                   'birthday' => $request->birthday,
                   'contact' => $request->contact,
                   'own_pet' => $request->own_pet,
-                  'status' => 'inactive',
-                  'is_approved' => '0',
+                  'status' => 'active',
                   'profile' => 'avatar.png'];
 
         $emailValidation = $this->usermodule->emailValidataion($request->email);
@@ -77,7 +76,7 @@ class UserController extends Controller
                 $create = $this->usermodule->create($data);
 
                 if($create) {
-                    return redirect()->back()->with('success', 'Your Credentials was successfully submitted. Please wait for admin approval.'); 
+                    return redirect()->back()->with('success', 'Credential was successfully registered.'); 
                 }
 
             } else return redirect()->back()->with('confirm', 'Password does not match'); 
@@ -85,23 +84,21 @@ class UserController extends Controller
         } else return redirect()->back()->with('email', 'Email is already use. Please provide other email'); 
     }
 
+    public function about()
+    {
+        return view('user.about');
+    }
+
     public function userManagement()
     {
-        $countUnapproved = $this->usermodule->countUnapprovedUser();
         $users = $this->usermodule->management();
-        return view('admin.usersmanagement')->with(compact('users','countUnapproved'));
+        return view('admin.usersmanagement')->with(compact('users'));
     }
 
     public function userManagementdetails($getid)
     {
         $details =  $this->usermodule->details($getid);
         return view('admin.userdetails')->with(compact('details'));
-    }
-
-    public function userVerify()
-    {
-        $verify = $this->usermodule->verify();
-        return view('admin.userverify')->with(compact('verify'));
     }
 
     public function userFormpage()
@@ -113,7 +110,7 @@ class UserController extends Controller
     {
         $request = request();
 
-        $data = [ 'role_id' => '1',
+        $data = [ 'role_id' => '2',
                   'email' => $request->email,
                   'password' => Hash::make($request->password),
                   'fname' => $request->fname,
@@ -124,7 +121,6 @@ class UserController extends Controller
                   'birthday' => $request->birthday,
                   'contact' => $request->contact,
                   'status' => 'active',
-                  'is_approved' => '1',
                   'profile' => 'avatar.png'];
 
         $emailValidation = $this->usermodule->emailValidataion($request->email);
@@ -134,7 +130,7 @@ class UserController extends Controller
             $create = $this->usermodule->create($data);
 
             if($create) {
-                return redirect()->back()->with('success', 'New credentials was successfully added.'); 
+                return redirect()->back()->with('success', 'New administrator was successfully created.'); 
             }
 
         } else return redirect()->back()->with('email', 'Email is already use. Please provide other email'); 
@@ -156,30 +152,6 @@ class UserController extends Controller
             else $message = "User is already activated";
 
             return redirect()->back()->with('success', $message);
-        }
-    }
-
-    public function userApproved()
-    {
-        $request = request();
-
-        $data = ['status' => $request->status,'is_approved' => $request->is_approved];
-
-        $approved = $this->usermodule->updateIsAprroved($request->userid, $data);
-
-        if($approved) {
-            return redirect('admin/users-management')->with('success', "User is already approved.");
-        }
-    }
-
-    public function userDeclined()
-    {
-        $request = request();
-
-        $decline = $this->usermodule->declineUser($request->userid);
-
-        if($decline) {
-            return redirect('admin/users-verify')->with('error', "User declined due to unreliable information");
         }
     }
 

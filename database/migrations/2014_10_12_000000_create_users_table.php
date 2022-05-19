@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('contact');
             $table->enum('own_pet',['yes','no']);
             $table->enum('status',['active','inactive']);
-            $table->integer('is_approved'); // 1 = approved
+            $table->integer('is_delete')->default(0);
             $table->longText('profile')->nullable();
             $table->rememberToken();
             $table->timestamps();

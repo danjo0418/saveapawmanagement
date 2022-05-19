@@ -1,12 +1,12 @@
 @extends('layouts.apps')
-@section('title')<title>{{ config('app.name') }} | Administrator Form </title>@endsection
+@section('title')<title>{{ config('app.name') }} | Admin Form </title>@endsection
 @section('page')
 
     <section class="page-title" style="background-image:url(asset/images/background/7.jpg)">
         <div class="auto-container">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h1>Administrator Form</h1>
+                    <h1>Admin Form</h1>
                 </div>
             </div>
         </div>

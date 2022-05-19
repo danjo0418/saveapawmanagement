@@ -28,11 +28,9 @@
                                         <li><i class="fa fa-venus-double "></i><span>{{ $details->gender }}</span></li>
                                         <li><i class="fa fa-calendar"></i><span>{{ date('M d, Y', strtotime($details->birthday)) }}</span></li>
                                         <li><i class="fa fa-paw"></i> Do you own a pet? {{ $details->own_pet }}</li>
-                                        @if($details->is_approved == 1)
-                                            <li class="{{ $details->status == 'active' ? "text-success":"text-danger" }}">
-                                                {{ ucfirst($details->status) }}
-                                            </li>
-                                        @endif
+                                        <li class="{{ $details->status == 'active' ? "text-success":"text-danger" }}">
+                                            {{ ucfirst($details->status) }}
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -46,18 +44,6 @@
                             <div class="detail pannel-footer">
                                 <div class="col-md-5 col-sm-5">
                                     <ul class="list-inline">
-                                        @if($details->is_approved == 0)
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#decline">
-                                                    <i class="fa fa-ban"></i> Decline
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#approve">
-                                                    <i class="fa fa-check"></i> Approved
-                                                </a>
-                                            </li>
-                                        @else
                                             @if($details->status == 'active')
                                                 <li class="list-inline-item">
                                                     <a href="javascript:void(0)" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deactivate">
@@ -71,7 +57,7 @@
                                                     </a>
                                                 </li>
                                             @endif
-                                        @endif
+                                        {{-- @endif --}}
                                     </ul>
                                 </div>
                             </div>
@@ -81,8 +67,6 @@
             </div>
         </div>
     </div>
-    @include('modal.user.decline')
-    @include('modal.user.approved')
     @include('modal.user.inactive')
     @include('modal.user.activate')
 @endsection

@@ -25,8 +25,8 @@ Class Helpers
 		return Pet::where('is_approved', 0)->count();
 	}
 
-	public static function countUnapprovedUser()
-	{
-		return User::where('is_approved',0)->count();
-	}
+	// public static function countUnapprovedUser()
+	// {
+	// 	return User::where('is_approved',0)->count();
+	// }
 }

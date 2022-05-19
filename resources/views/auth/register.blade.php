@@ -30,13 +30,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    @if(session('success'))
-                                        <div class="alert alert-success text-center" role="alert">
-                                            <i class="fa fa-check"></i> {{ session("success") }}
-                                        </div>
-                                    @endif
                                     <div class="main-body">
                                         <div class="body-inner">
+                                            @if(session('success'))
+                                                <div class="alert alert-success text-center" role="alert">
+                                                    <i class="fa fa-check"></i> {{ session("success") }}
+                                                </div>
+                                            @endif
                                             <div class="card bg-white">
                                                 <div class="card-content">
                                                     <section class="logo text-center">
