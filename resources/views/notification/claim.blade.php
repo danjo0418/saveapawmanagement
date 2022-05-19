@@ -57,6 +57,7 @@
                                             <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/'.$claim->pet->filename) }}">
                                         </div>
                                         <h5>{{ ucfirst($claim->pet->name) }}</h5>
+                                        <small></small>
                                         <p><strong>Description:</strong> <br/> {{ $claim->pet->description }}</p>
                                         <ul>
                                             <li><i class="fa fa-paw"></i> Age: {{ $claim->pet->age }}</li>
@@ -127,6 +128,10 @@
                         <h2><strong>NO DATA FOUND</strong></h2>
                     </div>
                 @endif
+
+                <nav aria-label="Page navigation example">
+                    {{ $claims->links() }}
+                </nav>
             </div>
         </section>
     </div>
