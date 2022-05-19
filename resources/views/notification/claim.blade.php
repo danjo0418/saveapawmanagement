@@ -46,72 +46,87 @@
 
         <section>
             <div class="container">
-                <div class="section-content mt-3">
-                    <div class="schedule-box maxwidth500 event-list clearfix mb-30">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h3 class="title mt-0"><a href="">Pet Details:</a></h3>
-                                <div class="thumb text-center">
-                                    <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/1652834282bulldog.jpg') }}">
-                                </div>
-                                <h5>Name</h5>
-                                <p><strong>Description:</strong> <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel velit, modi a, iste dolor consequuntur dolorum facere quod dolorem, eaque voluptatem. Magnam magni qui sapiente perferendis nam eius nostrum voluptatibus?</p>
-                                <ul>
-                                    <li><i class="fa fa-paw"></i> Age: </li>
-                                    <li><i class="fa fa-paw"></i> Gender: </li>
-                                    <li><i class="fa fa-paw"></i> Color: </li>
-                                    <li><i class="fa fa-paw"></i> Breed: </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="schedule-details clearfix p-15 pt-30">
-                                    <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
+                @if(count($claims) > 0)
+                    @foreach($claims as $claim)
+                        <div class="section-content mt-3 mb-5">
+                            <div class="schedule-box maxwidth500 event-list clearfix mb-30">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="title mt-0"><a href="">Pet Details:</a></h3>
+                                        <div class="thumb text-center">
+                                            <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/'.$claim->pet->filename) }}">
+                                        </div>
+                                        <h5>{{ ucfirst($claim->pet->name) }}</h5>
+                                        <p><strong>Description:</strong> <br/> {{ $claim->pet->description }}</p>
                                         <ul>
-                                            <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
-                                            <li class="font-18 text-white text-uppercase">Feb</li>
+                                            <li><i class="fa fa-paw"></i> Age: {{ $claim->pet->age }}</li>
+                                            <li><i class="fa fa-paw"></i> Gender:  {{ $claim->pet->gender}}</li>
+                                            <li><i class="fa fa-paw"></i> Color: {{ $claim->pet->color }}</li>
+                                            <li><i class="fa fa-paw"></i> Breed:  {{ $claim->pet->breed }}</li>
                                         </ul>
                                     </div>
-                                    <h3 class="title mt-0"><a href="">Claim Request</a></h3>
-                                    <ul class="list-inline text-gray">
-                                        <li><i class="fa fa-calendar"></i> Sundat at 9:30PM</li>
-                                    </ul>
+                                    <div class="col-md-6">
+                                        <div class="schedule-details clearfix p-15 pt-30">
+                                            <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
+                                                <ul>
+                                                    <li class="font-24 text-white font-weight-600 border-bottom ">
+                                                        {{ date('d', strtotime($claim->created_at)) }}
+                                                    </li>
+                                                    <li class="font-18 text-white text-uppercase">
+                                                        {{ date('M', strtotime($claim->created_at)) }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h3 class="title mt-0"><a href="">Claim Request</a></h3>
+                                            <ul class="list-inline text-gray">
+                                                <li><i class="fa fa-calendar"></i>
+                                                    {{ date('l h:i A', strtotime($claim->created_at)) }}
+                                                </li>
+                                            </ul>
 
-                                    <div class="clearfix"></div>
+                                            <div class="clearfix"></div>
 
-                                    <h3 class="title mt-0"><a href="">Photo of Lost Pet:</a></h3>
-                                    <div class="thumb">
-                                        <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/1652834282bulldog.jpg') }}">
-                                    </div>
+                                            <h3 class="title mt-0"><a href="">Photo of Lost Pet:</a></h3>
+                                            <div class="thumb">
+                                                <img class="img-fullwidth"  src="{{ asset('asset/images/lost/'.$claim->filename) }}">
+                                            </div>
 
-                                    <h3 class="title mt-0"><a href="">Request By:</a></h3>
-                                    <div class="event-text">
-                                        <p class="m-0" style="font-size: 20px;"><strong>Renan Escabas</strong></p>
-                                        <p class="m-0">Poblacion Cordova</p>
-                                        <small>enan@gmail.com</small> <br/>
-                                        <small>093123</small>
-                                    </div>
+                                            <h3 class="title mt-0"><a href="">Request By:</a></h3>
+                                            <div class="event-text">
+                                                <p class="m-0" style="font-size: 20px;"><strong>{{ ucfirst($claim->user->fname).' '.ucfirst($claim->user->lname) }}</strong></p>
+                                                <p class="m-0"><i class="fa fa-map-marker"></i> {{ $claim->user->address }}</p>
+                                                <small><i class="fa fa-envelope-o"></i> {{ $claim->user->email }}</small> <br/>
+                                                <small><i class="fa fa-phone"></i> {{ $claim->user->contact }}</small>
+                                            </div>
 
-                                    <h3 class="title mt-0"><a href="">Witness Details:</a></h3>
-                                    <p class="event-text">
-                                        Name: <br>
-                                        Email: <br>
-                                        Contact: <br>
-                                    </p>
+                                            <h3 class="title mt-0"><a href="">Witness Details:</a></h3>
+                                            <p class="event-text">
+                                                Name: {{ $claim->witness_email }}<br>
+                                                Email: {{ $claim->witness_name }}<br>
+                                                Contact: {{ $claim->witness_contact }}<br>
+                                            </p>
 
 
-                                    <div class="mt-10">
-                                        <a href="" class="btn btn-success">
-                                            <i class="fa fa-check"></i> Claim
-                                        </a>
-                                        <a href="" class="btn btn-danger">
-                                            Delete
-                                        </a>
+                                            <div class="mt-10">
+                                                <a href="" class="btn btn-success">
+                                                    <i class="fa fa-check"></i> Claim
+                                                </a>
+                                                <a href="" class="btn btn-danger">
+                                                    Delete
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="text-center">
+                        <h1><i class="fa fa-paw"></i></h1>
+                        <h2><strong>NO DATA FOUND</strong></h2>
                     </div>
-                </div>
+                @endif
             </div>
         </section>
     </div>
