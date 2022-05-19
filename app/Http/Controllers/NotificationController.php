@@ -26,17 +26,6 @@ class NotificationController extends Controller
         $this->claimmodule = $claim;
     }
 
-    // public function index()
-    // {
-
-    //     $verifyuser = $this->usermodule->countUnapprovedUser(); 
-    //     $verifypet = $this->petmodule->countUnapprovedPet();
-    //     $claimpet = $this->claimmodule->countClaim();
-    //     $adoptpet = $this->adoptmodule->countAdopt();
-
-    //     return view('notification.index')->with(compact('verifyuser','verifypet','claimpet','adoptpet'));
-    // }
-
     public function claimPets()
     {
         $claims = $this->claimmodule->claim();
