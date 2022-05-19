@@ -21,7 +21,7 @@ class CreateClaimTable extends Migration
             $table->string('witness_email')->nullable();
             $table->string('witness_name');
             $table->string('witness_contact');
-            $table->integer('is_delete'); // 1 = deleted
+            $table->integer('is_delete'); // 1 = claim 2 = deleted
             $table->timestamps();
         });
     }

@@ -39,9 +39,8 @@ class NotificationController extends Controller
 
     public function claimPets()
     {
-        return $this->claimmodule->claim();
-        
-        return view('notification.claim');
+        $claims = $this->claimmodule->claim();
+        return view('notification.claim')->with(compact('claims'));
     }
 
     public function adoptPets()

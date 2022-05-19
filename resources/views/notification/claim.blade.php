@@ -14,9 +14,78 @@
     <!--End Page Title-->
 
     <div class="auto-container mt-5">
-        <div class="clearfix">
-            <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to Pets Management</a>
-        </div>
+        <section>
+            <div class="container">
+                <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to Pets Management</a>
+
+                <div class="section-content mt-3">
+                    <div class="schedule-box maxwidth500 event-list clearfix mb-30">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="title mt-0"><a href="">Pet Details:</a></h3>
+                                <div class="thumb text-center">
+                                    <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/1652834282bulldog.jpg') }}">
+                                </div>
+                                <h5>Name</h5>
+                                <p><strong>Description:</strong> <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel velit, modi a, iste dolor consequuntur dolorum facere quod dolorem, eaque voluptatem. Magnam magni qui sapiente perferendis nam eius nostrum voluptatibus?</p>
+                                <ul>
+                                    <li><i class="fa fa-paw"></i> Age: </li>
+                                    <li><i class="fa fa-paw"></i> Gender: </li>
+                                    <li><i class="fa fa-paw"></i> Color: </li>
+                                    <li><i class="fa fa-paw"></i> Breed: </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="schedule-details clearfix p-15 pt-30">
+                                    <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
+                                        <ul>
+                                            <li class="font-24 text-white font-weight-600 border-bottom ">28</li>
+                                            <li class="font-18 text-white text-uppercase">Feb</li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="title mt-0"><a href="">Claim Request</a></h3>
+                                    <ul class="list-inline text-gray">
+                                        <li><i class="fa fa-calendar"></i> Sundat at 9:30PM</li>
+                                    </ul>
+
+                                    <div class="clearfix"></div>
+
+                                    <h3 class="title mt-0"><a href="">Photo of Lost Pet:</a></h3>
+                                    <div class="thumb">
+                                        <img class="img-fullwidth"  src="{{ asset('asset/images/pets/thumb/1652834282bulldog.jpg') }}">
+                                    </div>
+
+                                    <h3 class="title mt-0"><a href="">Request By:</a></h3>
+                                    <div class="event-text">
+                                        <p class="m-0" style="font-size: 20px;"><strong>Renan Escabas</strong></p>
+                                        <p class="m-0">Poblacion Cordova</p>
+                                        <small>enan@gmail.com</small> <br/>
+                                        <small>093123</small>
+                                    </div>
+
+                                    <h3 class="title mt-0"><a href="">Witness Details:</a></h3>
+                                    <p class="event-text">
+                                        Name: <br>
+                                        Email: <br>
+                                        Contact: <br>
+                                    </p>
+
+
+                                    <div class="mt-10">
+                                        <a href="" class="btn btn-success">
+                                            <i class="fa fa-check"></i> Claim
+                                        </a>
+                                        <a href="" class="btn btn-danger">
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
 
