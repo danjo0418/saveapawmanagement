@@ -42,7 +42,7 @@ class PetModule
 
 	public function pending()
 	{
-		return Pet::with('user')->where('is_approved', 0)->paginate(10);
+		return Pet::with('user')->where('is_approved', 0)->orderBy('updated_at', 'DESC')->paginate(10);
 	}
 
 	public function countUnapprovedPet()
@@ -57,6 +57,6 @@ class PetModule
 
 	public function myPost()
 	{
-		return Pet::where('user_id','=' ,Auth::user()->id)->paginate(10);
+		return Pet::where('user_id','=' ,Auth::user()->id)->orderBy('updated_at','DESC')->paginate(10);
 	}
 }

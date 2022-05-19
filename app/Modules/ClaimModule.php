@@ -15,6 +15,6 @@ class ClaimModule
 
 	public function claim()
 	{
-		return Claim::with('pet','user')->where('is_delete','0')->paginate(5);
+		return Claim::with('pet','user')->where('is_delete','0')->orderBy('updated_at','DESC')->paginate(5);
 	}
 }
