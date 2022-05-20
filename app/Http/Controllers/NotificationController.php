@@ -34,6 +34,7 @@ class NotificationController extends Controller
 
     public function adoptPets()
     {
-        return view('notification.adopt');
+        $adopts = $this->adoptmodule->adopt();
+        return view('notification.adopt')->with(compact('adopts'));
     }
 }

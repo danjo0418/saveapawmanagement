@@ -43,15 +43,12 @@ class PetModule
 	public function pending()
 	{
 
-
-		//return Pet::with('user')->where(DB::raw("(DATE_FORMAT(updated_at,'%Y-%m-%d'))"), "=", $q)->get();
-
 		$request = request();
 
 		$query = Pet::with('user')->where('is_approved', 0);
 
 		if($request->has('filter')) { 
-			$query->where(DB::raw("(DATE_FORMAT(updated_at,'%Y-%m-%d'))"), "=", $request->get('filter'));
+			$query->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), "=", $request->get('filter'));
 		} else $query;
 
 		return $query->orderBy('updated_at', 'DESC')->paginate(10);
@@ -70,6 +67,16 @@ class PetModule
 
 	public function myPost()
 	{
-		return Pet::where('user_id','=' ,Auth::user()->id)->orderBy('updated_at','DESC')->paginate(10);
+
+		$request = request();
+
+		$query = Pet::where('user_id','=' ,Auth::user()->id);
+
+		if($request->has('filter')) { 
+			$query->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), "=", $request->get('filter'));
+		} else $query;
+
+		return $query->orderBy('updated_at', 'DESC')->paginate(10);
+
 	}
 }

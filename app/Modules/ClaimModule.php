@@ -15,6 +15,15 @@ class ClaimModule
 
 	public function claim()
 	{
-		return Claim::with('pet','user')->where('is_delete','0')->orderBy('updated_at','DESC')->paginate(5);
+
+		$request = request();
+
+		$query = Claim::with('pet','user')->where('is_delete','0');
+
+		if($request->has('filter')) { 
+			$query->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), "=", $request->get('filter'));
+		} else $query;
+
+		return $query->orderBy('updated_at', 'DESC')->paginate(10);
 	}
 }
