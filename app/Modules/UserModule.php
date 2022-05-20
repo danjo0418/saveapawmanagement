@@ -44,6 +44,11 @@ class UserModule
 	{
 		return User::find($setid)->update($data);
 	}
+
+	public function countUsers()
+	{
+		return User::where('status', 'active')->count();
+	}
 }
 
 

@@ -36,9 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('claimForm', 'PetController@claimForm');
 
     //admin view
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('dashboard', 'HomeController@index');
 
     Route::get('admin/pets-management', 'PetController@petManagement');
     Route::get('admin/pets-form', 'PetController@petForm');

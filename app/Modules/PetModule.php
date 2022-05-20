@@ -55,11 +55,6 @@ class PetModule
 
 	}
 
-	public function countUnapprovedPet()
-	{
-		return Pet::where('is_approved', 0)->count();
-	}
-
 	public function update($setid, $data)
 	{
 		return Pet::find($setid)->update($data);
@@ -78,5 +73,16 @@ class PetModule
 
 		return $query->orderBy('updated_at', 'DESC')->paginate(10);
 
+	}
+
+	public function countUnapprovedPet()
+	{
+		return Pet::where('is_approved', 0)->count();
+	}
+
+
+	public function latestPending()
+	{
+		return Pet::with('user')->where('is_approved', 0)->orderBy('updated_at', 'DESC')->limit(5)->get();
 	}
 }

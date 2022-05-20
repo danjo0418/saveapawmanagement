@@ -78,7 +78,7 @@
                                         <li><a href="{{ URL::to('admin/pets-management') }}">Pets</a></li>
                                         <li><a href="{{ URL::to('admin/users-management') }}">Users</a></li>
                                         <li class="dropdown">
-                                            <a href="{{ URL::to('notifications') }}">Notifications</a>
+                                            <a href="javascript:void(0)">Notifications</a>
                                             <ul>
                                                 <li>
                                                     <a href="{{ URL::to('admin/pets-verification') }}">
@@ -114,7 +114,7 @@
                                             @if(Auth::user()->role_id == 3)
                                                 <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                             @endif
-                                            <li><a href=""><span class="fa fa-rss "></span> My Blogs</a></li>
+                                            <li><a href=""><span class="fa fa-rss"></span> My Blogs</a></li>
                                             <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
                                         </ul>
@@ -163,15 +163,49 @@
                                     <li><a href="{{ URL::to('dashboard') }}">Dashboard</a></li>
                                     <li><a href="{{ URL::to('admin/pets-management') }}">Pets</a></li>
                                     <li><a href="{{ URL::to('admin/users-management') }}">Users</a></li>
-                                    <li><a href="{{ URL::to('notifications') }}">Notifications</a></li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0)">Notifications</a>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ URL::to('admin/pets-verification') }}">
+                                                    Verify Pets 
+                                                    <span class="badge badge-danger">
+                                                        {{ App\Modules\Helpers::countUnapprovedPet() }}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ URL::to('admin/claim-pets') }}">
+                                                    Claim Pets 
+                                                    <span class="badge badge-danger">
+                                                        {{ App\Modules\Helpers::countClaim() }}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ URL::to('admin/adopt-pets') }}">
+                                                    Adopt Pets 
+                                                    <span class="badge badge-danger">
+                                                        {{ App\Modules\Helpers::countAdopt() }}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ URL::to('blogs') }}">Blogs</a></li>
                                 @endif
                                 <li class="cstm_li"><a href=""><img class="avatar" src="{{ asset('asset/images/users/thumb/'.Auth::user()->profile) }}"></a></li>
                                 <li class="cstm_li dropdown"><a href="javascript:void(0)">{{ Auth::user()->email }} <span class="fa fa-sort-desc"></span></a>
                                     <ul>
+                                        @if(Auth::user()->role_id == 3)
+                                            <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
+                                        @endif
+                                        <li><a href=""><span class="fa fa-rss"></span> My Blogs</a></li>
                                         <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
                                     </ul>
                                 </li>
+
                             @endguest
                         </ul>
                     </div>
