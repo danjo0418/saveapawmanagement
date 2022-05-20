@@ -26,4 +26,9 @@ class ClaimModule
 
 		return $query->orderBy('updated_at', 'DESC')->paginate(10);
 	}
+
+	public function update($setid, $data)
+	{
+		return Claim::find($setid)->update($data);
+	}
 }

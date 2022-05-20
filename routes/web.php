@@ -56,7 +56,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('admin/pets-verification', 'PetController@petVerification');
     Route::get('admin/claim-pets', 'NotificationController@claimPets');
+    Route::post('claimApproved', 'NotificationController@claimApproved');
+    Route::post('claimDeclined', 'NotificationController@claimDeclined');
+
     Route::get('admin/adopt-pets', 'NotificationController@adoptPets');
+    Route::post('adoptApproved', 'NotificationController@adoptApproved');
+    Route::post('adoptDeclined', 'NotificationController@adoptDeclined');
     
 
     //all view

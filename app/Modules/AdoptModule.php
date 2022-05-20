@@ -25,4 +25,9 @@ class AdoptModule
 
 		return $query->orderBy('updated_at', 'DESC')->paginate(10);
 	}
+
+	public function update($setid, $data)
+	{
+		return Adopt::find($setid)->update($data);
+	}
 }

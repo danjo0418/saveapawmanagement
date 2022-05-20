@@ -107,13 +107,8 @@
 
 
                                             <div class="mt-10">
-                                                <a href="javascript:void(0)" class="btn btn-success">
-                                                    <i class="fa fa-check"></i> 
-                                                    Adopt Approved
-                                                </a>
-                                                <a href="javascript:void(0)" class="btn btn-danger">
-                                                    Declined
-                                                </a>
+                                                <a href="javascript:void(0)" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#adoptApproved" onclick="getDataA({{ $adopt }})"><i class="fa fa-check"></i> Approved</a>
+                                                <a href="javascript:void(0)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#adoptDeclined" onclick="getDataD({{ $adopt }})">Declined</a>
                                             </div>
                                         </div>
                                     </div>
@@ -130,5 +125,17 @@
             </div>
         </section>
     </div>
-
+    @include('modal.adopt.approve')
+    @include('modal.adopt.decline')
+@endsection
+@section('script')
+    <script>
+        function getDataA(data) {
+            $('.js-adoptid').val(data.id);
+            $('.js-petid').val(data.pet_id);
+        }
+        function getDataD(data) {
+            $('.js-adoptid').val(data.id);
+        }
+    </script>
 @endsection

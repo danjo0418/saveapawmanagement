@@ -109,13 +109,8 @@
 
 
                                             <div class="mt-10">
-                                                <a href="javascript:void(0)" class="btn btn-success">
-                                                    <i class="fa fa-check"></i> 
-                                                    Claim Approved
-                                                </a>
-                                                <a href="javascript:void(0)" class="btn btn-danger">
-                                                    Declined
-                                                </a>
+                                                <a href="javascript:void(0)" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#claimApproved" onclick="getDataA({{ $claim }})"><i class="fa fa-check"></i> Approved</a>
+                                                <a href="javascript:void(0)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#claimDeclined" onclick="getDataD({{ $claim }})">Declined</a>
                                             </div>
                                         </div>
                                     </div>
@@ -136,6 +131,17 @@
             </div>
         </section>
     </div>
-
-
+    @include('modal.claim.approve')
+    @include('modal.claim.decline')
+@endsection
+@section('script')
+    <script>
+        function getDataA(data) {
+            $('.js-claimid').val(data.id);
+            $('.js-petid').val(data.pet_id);
+        }
+        function getDataD(data) {
+            $('.js-claimid').val(data.id);
+        }
+    </script>
 @endsection
