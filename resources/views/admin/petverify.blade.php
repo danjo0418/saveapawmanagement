@@ -12,8 +12,31 @@
         </div>
     </section>
     <div class="auto-container mt-5">
+
+        <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to Pets Management</a>
+
+        <section class="buttons mt-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        <form class="form-inline">
+                            <div class="input-group mb-3">
+                                <input type="date" class="form-control" value="{{ request()->get('filter') }}" name="filter">
+                                <button class="btn btn-outline-secondary" id="button-addon1"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-1">
+                        <a href="{{ URL::to('admin/pets-verification') }}" class="btn btn-primary"><span class="fa fa-refresh"></span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="clearfix">
-            <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to Pets Management</a>
+            
             <section class="brows-job-category mt-3">
                 <div class="container">
                     @if(count($verify) > 0)

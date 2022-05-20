@@ -24,9 +24,9 @@ class CreatePetsTable extends Migration
             $table->string('age');
             $table->longText('description');
             $table->longText('filename');
-            $table->integer('is_approved'); // 0 = pendin 1 = approved 2 = declined 3 = deleted
-            $table->integer('is_claim'); // 1 = claim
-            $table->integer('is_adapt'); // 1 = adapt
+            $table->integer('is_approved')->default(0); // 0 = pendin 1 = approved 2 = declined 3 = deleted
+            $table->integer('is_claim')->default(0); // 1 = claim
+            $table->integer('is_adapt')->default(0); // 1 = adapt
             $table->timestamps();
         });
     }

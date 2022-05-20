@@ -15,7 +15,7 @@
             <section class="buttons">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col-lg-8">
                             <a href="{{ URL::to('admin/users-form') }}" class="btn btn-primary">
                                 <i class="fa fa-plus"></i> Add Admin
                             </a>

@@ -22,7 +22,7 @@ class CreateAdoptTable extends Migration
             $table->string('id_type');
             $table->string('id_no');
             $table->string('filename');
-            $table->integer('is_delete'); // 1 = claim 2 = deleted
+            $table->integer('is_delete')->default(0); // 1 = claim 2 = deleted
             $table->timestamps();
         });
     }

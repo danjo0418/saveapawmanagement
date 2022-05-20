@@ -40,7 +40,7 @@
                                    </div>
                                    <div class="form-group mt-3">
                                        <label for="status">Status: </label>
-                                       <select id="status" class="form-control" name="status">
+                                       <select id="status" class="form-control" name="status" required>
                                            <option selected disabled>-- Select Status --</option>
                                            <option value="adopt">Adopt</option>
                                            <option value="lostandfound">Lost and Found</option>

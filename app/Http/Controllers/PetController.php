@@ -81,7 +81,8 @@ class PetController extends Controller
     }
 
     public function petVerification()
-    {
+    {   
+
         $verify = $this->petmodule->pending();
         return view('admin.petverify')->with(compact('verify'));
     }
@@ -126,7 +127,7 @@ class PetController extends Controller
 
                 $message;
 
-                if(Auth::user()->role_id == 1) $message = "Pet was successfully added.";
+                if(Auth::user()->role_id <= 2) $message = "Pet was successfully added.";
                 else  $message = 'Pet was successfully submitted. and waiting for admin approval';
 
                 return redirect()->back()->with('success', $message); 
