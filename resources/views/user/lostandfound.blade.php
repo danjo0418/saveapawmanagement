@@ -6,13 +6,10 @@
         <div class="auto-container">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h1>Lost and Found Pet</h1>
+                    <h1>Lost and Found</h1>
                 </div>
                 <div class="pull-right">
-                    <ul class="page-breadcrumb">
-                        <li><a href="">Home</a></li>
-                        <li>Lost and Found</li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>

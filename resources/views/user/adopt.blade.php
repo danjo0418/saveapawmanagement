@@ -6,7 +6,7 @@
         <div class="auto-container">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h1>Adopt Pet</h1>
+                    <h1>Adopt</h1>
                 </div>
                 <div class="pull-right">
 
