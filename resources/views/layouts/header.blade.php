@@ -114,7 +114,7 @@
                                             @if(Auth::user()->role_id == 3)
                                                 <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                             @endif
-                                            <li><a href=""><span class="fa fa-rss"></span> My Blogs</a></li>
+                                            <li><a href="{{ URL::to('myblogs') }}"><span class="fa fa-rss"></span> My Blogs</a></li>
                                             <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
                                         </ul>
@@ -158,7 +158,7 @@
                                             <li><a href="{{ URL::to('lost-and-found') }}">Lost and Found</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ URL::to('blog') }}">Blog</a></li>
+                                    <li><a href="{{ URL::to('blogs') }}">Blogs</a></li>
                                 @else
                                     <li><a href="{{ URL::to('dashboard') }}">Dashboard</a></li>
                                     <li><a href="{{ URL::to('admin/pets-management') }}">Pets</a></li>
@@ -200,7 +200,7 @@
                                         @if(Auth::user()->role_id == 3)
                                             <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                         @endif
-                                        <li><a href=""><span class="fa fa-rss"></span> My Blogs</a></li>
+                                        <li><a href="{{ URL::to('myblogs') }}"><span class="fa fa-rss"></span> My Blogs</a></li>
                                         <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
                                     </ul>

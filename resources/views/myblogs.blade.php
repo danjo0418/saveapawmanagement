@@ -1,12 +1,12 @@
 @extends('layouts.apps')
-@section('title')<title>{{ config('app.name') }} | Blogs </title>@endsection
+@section('title')<title>{{ config('app.name') }} | My Blogs </title>@endsection
 @section('page')
 	<!--Page Title-->
     <section class="page-title" style="background-image:url(asset/images/background/7.jpg)">
         <div class="auto-container">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h1>Blogs</h1>
+                    <h1>My Blogs</h1>
                 </div>
                 <div class="pull-right">
 
@@ -19,7 +19,7 @@
     <section class="blog-page-section">
         <div class="auto-container">
             <a href="" class="btn btn-warning"><i class="fa fa-plus"></i> Post Blog</a>
-            <div class="row clearfix mt-3">
+            <div class="row clearfix">
                  @if(count($blogs) > 0)
                     @foreach($blogs as $blog)
                         <div class='news-block-two col-md-4 col-sm-6 col-xs-12'>
@@ -56,8 +56,8 @@
                     @endforeach
                 @else
                     <div class="text-center">
-                        <h1><i class="fa fa-paw"></i></h1>
-                        <h2><strong>NO DATA FOUND</strong></h2>
+                        <h1><i class="fa fa-rss"></i></h1>
+                        <h2><strong><a href="" class="btn btn-warning">POST BLOGS</a></strong></h2>
                     </div>
                 @endif
 

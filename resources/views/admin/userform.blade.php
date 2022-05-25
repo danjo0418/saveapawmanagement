@@ -22,7 +22,7 @@
                             {{ csrf_field() }}
                             <input  type="hidden" class="form-control" value="$av3apAw2022" name="password">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="mb-2 form-group">
                                         <label for="email">Email Address:</label>
                                         <input id="email" type="email" class="form-control" name="email" placeholder="Email Address"  required>
@@ -43,7 +43,7 @@
                                         <input id="lname" type="text" class="form-control" name="lname" placeholder="Last Name" required autofocus>
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-4">
                                     <div class="mb-2 form-group">
                                         <label for="address">Address:</label>
                                         <input id="address" type="text" class="form-control" name="address" placeholder="Address" required autofocus>
@@ -68,6 +68,17 @@
                                         <input id="contact" minlength="6" type="text" class="form-control" name="contact" placeholder="+63" required autofocus>
                                     </div>
                                 </div>
+                                <div class="col-lg-4">  
+                                    <div class="mb-2 form-group">    
+                                        <label for="password">Password:</label>
+                                        <input id="password" type="text" class="form-control" name="password" placeholder="Password" required autofocus>
+                                        <small> {{ session('confirm') }}</small>
+                                    </div>
+                                    <div class="form-group">    
+                                        <label for="confirmpassword">Confirm Password:</label>
+                                        <input id="confirmpassword" type="text" class="form-control" name="confirmpassword" placeholder="Confirm Password" required autofocus>
+                                    </div>  
+                                </div>  
                             </div>
                             <button class="mt-3 btn btn-warning"><i class="fa fa-check"></i>  SUBMIT</button>
                         </form>

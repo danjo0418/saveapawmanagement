@@ -16,9 +16,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8">
-                            <a href="{{ URL::to('admin/users-form') }}" class="btn btn-primary">
-                                <i class="fa fa-plus"></i> Add Admin
-                            </a>
+                            @if(Auth::user()->role_id == 1)
+                                <a href="{{ URL::to('admin/users-form') }}" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Add Admin
+                                </a>
+                            @endif
                         </div>
                         <div class="col-lg-3">
                             <form class="form-inline">

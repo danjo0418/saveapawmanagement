@@ -127,11 +127,15 @@ class UserController extends Controller
 
         if(!is_object($emailValidation)) {
 
-            $create = $this->usermodule->create($data);
+            if($request->password == $request->confirmpassword) {
 
-            if($create) {
-                return redirect()->back()->with('success', 'New administrator was successfully created.'); 
-            }
+                $create = $this->usermodule->create($data);
+
+                if($create) {
+                    return redirect()->back()->with('success', 'New administrator was successfully created.'); 
+                }
+
+            } else  return redirect()->back()->with('confirm', 'Password does not match'); 
 
         } else return redirect()->back()->with('email', 'Email is already use. Please provide other email'); 
     }

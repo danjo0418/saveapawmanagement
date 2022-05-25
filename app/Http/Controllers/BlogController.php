@@ -17,16 +17,34 @@ class BlogController extends Controller
         $this->blogmodule = $blog;
     }
 
+    public function myBlogs()
+    {
+        $blogs = $this->blogmodule->myBlog();
+        return view('myblogs')->with(compact('blogs'));
+    }
+
     public function blog()
     {   
-        $blogs = $this->blogmodule->viewBlog();
+        $blogs = $this->blogmodule->view();
 
         return view('blog')->with(compact('blogs'));
     }
 
-    public function blogDetails()
+    public function blogDetails($getid)
     {
-        return view('blogdetails');
+         $detail = $this->blogmodule->details($getid);
+         return view('blogdetails')->with(compact('detail'));
+    }
+
+
+    public function comment()
+    {
+        $request = request();
+        $data = ['blog_id'=>$request->blogid, 'user_id'=>$request->userid, 'message'=>$request->message];
+
+        $create = $this->blogmodule->comment($data);
+
+        return redirect()->back()->with('success', 'Your comments is already added'); 
     }
 
 }
