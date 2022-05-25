@@ -46,6 +46,16 @@ font-family: 'Kaushan Script', sans-serif;*/
 
  ***/
 
+.owner p {
+    font-size: 20px;
+    color: #6e6e6e !important;
+}
+
+.owner small {
+    position: relative;
+    bottom: 9px;
+}
+
 .user-com img {
     width: 100px;
     height: 100px;
@@ -10944,7 +10954,9 @@ ul, p {
 
 .about.pet .team .member {
     text-align: center;
-    padding-top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 40px 25px;
 }
 
 .about.pet .team .member .image img {

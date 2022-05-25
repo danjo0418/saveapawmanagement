@@ -65,7 +65,7 @@
                                     @if(Auth::user()->role_id == 3)
                                         <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
                                         <li class="dropdown">
-                                            <a href="javascript:void(0)">Pets</a>
+                                            <a href="javascript:void(0)">Pets <i class="fa fa-caret-down"></i></a>
                                             <ul>
                                                 <li><a href="{{ URL::to('pets-form') }}">Form</a></li>
                                                 <li><a href="{{ URL::to('adopt') }}">Adopt</a></li>
@@ -78,7 +78,7 @@
                                         <li><a href="{{ URL::to('admin/pets-management') }}">Pets</a></li>
                                         <li><a href="{{ URL::to('admin/users-management') }}">Users</a></li>
                                         <li class="dropdown">
-                                            <a href="javascript:void(0)">Notifications</a>
+                                            <a href="javascript:void(0)">Notifications <i class="fa fa-caret-down"></i></a>
                                             <ul>
                                                 <li>
                                                     <a href="{{ URL::to('admin/pets-verification') }}">
@@ -151,7 +151,7 @@
                                 @if(Auth::user()->role_id == 3)
                                     <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
                                     <li class="dropdown">
-                                        <a href="javascript:void(0)">Pets</a>
+                                        <a href="javascript:void(0)">Pets <i class="fa fa-caret-down"></i></a>
                                         <ul>
                                             <li><a href="{{ URL::to('pets-form') }}">Form</a></li>
                                             <li><a href="{{ URL::to('adopt') }}">Adopt</a></li>
@@ -164,7 +164,7 @@
                                     <li><a href="{{ URL::to('admin/pets-management') }}">Pets</a></li>
                                     <li><a href="{{ URL::to('admin/users-management') }}">Users</a></li>
                                     <li class="dropdown">
-                                        <a href="javascript:void(0)">Notifications</a>
+                                        <a href="javascript:void(0)">Notifications <i class="fa fa-caret-down"></i></a>
                                         <ul>
                                             <li>
                                                 <a href="{{ URL::to('admin/pets-verification') }}">

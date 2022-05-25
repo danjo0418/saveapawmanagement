@@ -71,12 +71,12 @@
                                 <div class="col-lg-4">  
                                     <div class="mb-2 form-group">    
                                         <label for="password">Password:</label>
-                                        <input id="password" type="text" class="form-control" name="password" placeholder="Password" required autofocus>
-                                        <small> {{ session('confirm') }}</small>
+                                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" required autofocus>
+                                        <small class="text-danger">{{ session('confirm') }}</small>
                                     </div>
                                     <div class="form-group">    
                                         <label for="confirmpassword">Confirm Password:</label>
-                                        <input id="confirmpassword" type="text" class="form-control" name="confirmpassword" placeholder="Confirm Password" required autofocus>
+                                        <input id="confirmpassword" type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password" required autofocus>
                                     </div>  
                                 </div>  
                             </div>

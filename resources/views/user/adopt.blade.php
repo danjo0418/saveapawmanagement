@@ -1,5 +1,5 @@
 @extends('layouts.apps')
-@section('title')<title>{{ config('app.name') }} </title>@endsection
+@section('title')<title>{{ config('app.name') }} | Adopt </title>@endsection
 @section('page')
 	<!--Page Title-->
     <section class="page-title" style="background-image:url(asset/images/background/7.jpg)">
@@ -36,6 +36,10 @@
                                         <img src="{{ asset('asset/images/pets/thumb/'.$pet->filename) }}" alt="image of pet" title="pet"
                                             class="img-fluid customer">
                                     </div>
+                                    <div class="owner">
+                                        <p class="m-0"><strong>{{ ucfirst($pet->user->fname ).' '.ucfirst($pet->user->lname )}}</strong></p>
+                                        <small><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($pet->created_at)) }}</small>
+                                    </div>
                                     <div class="content">
                                         <h4 class="wow fadeInDown">{{ $pet->name }}</h4>
                                         <ul>
@@ -44,11 +48,16 @@
                                             <li><i class="fas fa-paw"></i> <strong>Breed:</strong> {{ $pet->breed }}</li>
                                             <li><i class="fas fa-paw"></i> <strong>Color:</strong> {{ $pet->color }}</li>
                                         </ul>
-                                        <small>Date Posted: {{ date('M d, Y', strtotime($pet->created_at)) }}</small>
                                         <div class="button wow fadeInUp">
-                                            <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
-                                                Adopt me <i class="fas fa-paw"></i>
-                                            </a>
+                                            @if($pet->user_id == Auth::user()->id)
+                                                <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
+                                                    Read More <i class="fas fa-paw"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
+                                                    Adopt Me <i class="fas fa-paw"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
