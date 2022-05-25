@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('profile', 'UserController@updateProfile');
 
     Route::get('blogs', 'BlogController@blog');
+    Route::get('blogs/{id}', 'BlogController@blogDetails');
+
 });
 
 

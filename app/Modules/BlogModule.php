@@ -8,6 +8,6 @@ class BlogModule
 {
 	public function viewBlog()
 	{
-		return Blog::get();
+		return Blog::orderBy('updated_at', 'DESC')->paginate(12);
 	}
 }

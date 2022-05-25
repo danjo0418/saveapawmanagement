@@ -24,5 +24,9 @@ class BlogController extends Controller
         return view('blog')->with(compact('blogs'));
     }
 
+    public function blogDetails()
+    {
+        return view('blogdetails');
+    }
 
 }
