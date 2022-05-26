@@ -18,7 +18,7 @@
 
     <section class="blog-page-section">
         <div class="auto-container">
-            <a href="" class="btn btn-warning"><i class="fa fa-plus"></i> Post Blog</a>
+            <a href="{{ URL::to('blog-form') }}" class="btn btn-warning"><i class="fa fa-plus"></i> Post Blog</a>
             <div class="row clearfix mt-3">
                  @if(count($blogs) > 0)
                     @foreach($blogs as $blog)
@@ -48,7 +48,7 @@
                                         {{-- <li><span class='icon fa fa-heart'></span> 196</li> --}}
                                     </ul>
                                     <h3><a href="{{ URL::to('blogs/'.$blog->id) }}">{{ $blog->title }}</a></h3>
-                                    <div class='text'>{{ str_limit($blog->description, 300)  }}.</div>
+                                    <div class='text'>{{ str_limit($blog->description, 200)  }}.</div>
                                     <a href='{{ URL::to('blogs/'.$blog->id) }}' class='theme-btn btn-style-eight'>read more</a>
                                 </div>
                             </div>

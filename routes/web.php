@@ -70,6 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('blogs', 'BlogController@blog');
     Route::get('blogs/{id}', 'BlogController@blogDetails');
     Route::post('comment', 'BlogController@comment');
+
+    Route::get('blog-form', 'BlogController@form');
+    Route::post('blogCreate', 'BlogController@formCreate');
+    Route::post('blogUpdate', 'BlogController@formUpdate');
 });
 
 

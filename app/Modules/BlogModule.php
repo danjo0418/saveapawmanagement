@@ -9,6 +9,16 @@ use Auth;
 
 class BlogModule
 {
+	public function create($data)
+	{
+		return Blog::create($data);
+	}
+
+	public function update($setid, $data)
+	{
+		return Blog::find($setid)->update($data);
+	}
+
 	public function myBlog()
 	{
 		return Blog::with('user')->where('user_id', Auth::user()->id)->orderBy('updated_at', 'DESC')->paginate(12);
@@ -29,4 +39,6 @@ class BlogModule
 	{
 		return Comment::create($data);
 	}
+
+
 }

@@ -22,6 +22,14 @@
                 <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
                     <div class="blog-single padding-right">
                         <div class="inner-box">
+                            
+                            <div class="mb-4">
+                                <a href="{{ URL::to('blogs') }}"><i class="fa fa-angle-left"></i> Go to Blogs</a>
+                                @if($detail->user_id == Auth::user()->id)
+                                    <a href="javascript:void(0)" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#update"><i class="fa fa-pencil-square-o"></i> Update</a>
+                                 @endif
+                            </div>
+                           
                             <div class="image">
                                 <img src="{{ asset('asset/images/blogs/'.$detail->filename) }}" alt="">
                             </div>
@@ -86,6 +94,7 @@
 
                     </div>
                     <!--End Comments Area-->
+                    
                     <!-- Comment Form -->
                     <div class="comment-form">
                         <div class="group-title">
@@ -128,7 +137,7 @@
                                 <ul class="cat-list">
                                     <li><a href="{{ URL::to('blogs') }}">Blogs</a></li>
                                     <li><a href="{{ URL::to('myblogs') }}">My Blogs</a></li>
-                                    <li><a href="">Post Blog</a></li>
+                                    <li><a href="{{ URL::to('blog-form') }}">Post Blog</a></li>
                                 </ul>
                             </div>
                         </aside>
@@ -137,5 +146,5 @@
         </div>
     </div>
 
-
+    @include('modal.blog.update')
 @endsection
