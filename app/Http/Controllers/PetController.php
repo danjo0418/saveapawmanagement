@@ -111,6 +111,7 @@ class PetController extends Controller
                        'age'=> $request->age,
                        'filename'=> $filename,
                        'description'=> $request->description,
+                       'is_vaccinated'=>$request->is_vaccinated,
                        'is_approved' => $request->is_approved];
 
         if(in_array($filextension, ['jpeg','jpg','png','gif'])) {
@@ -146,7 +147,8 @@ class PetController extends Controller
                  'color'=> $request->color,
                  'gender'=> $request->gender,
                  'age'=> $request->age,
-                 'description'=> $request->description];
+                 'description'=> $request->description,
+                 'is_vaccinated' => $request->is_vaccinated];
 
         if($request->hasFile('image')) {
 

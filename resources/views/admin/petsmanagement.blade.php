@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </section>
-            <section class="brows-job-category mt-3">
+            <section class="brows-job-category mt-3 mb-5">
                 <div class="container">
                     <p><i>List of Approved pets</i></p>
                     @if(count($management) > 0)
@@ -62,8 +62,8 @@
                                             <div class="col-lg-10 col-sm-12">
                                                 <div class="row">
                                                     <div class="col-lg-12 pe-5">
-                                                        <small class="text-primary">Posted By: {{ $pet->user->fname.' '.$pet->user->lname }}</small>
-                                                        <small class="float-end text-primary">Date: {{ date('M d, Y', strtotime($pet->created_at)) }}</small>
+                                                        <small class="text-secondary">Posted By: {{ $pet->user->fname.' '.$pet->user->lname }}</small>
+                                                        <small class="float-end text-secondary"><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($pet->created_at)) }}</small>
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="brows-job-position">

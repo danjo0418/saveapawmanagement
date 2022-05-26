@@ -16,7 +16,13 @@
                 <a href="{{ URL::to('mypets') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to My Pets</a>
                 <section class="detail-desc mt-3">
                     <div class="container white-shadow">
+                        <div class="row"></div>
                         <div class="row bottom-mrg">
+                            <div class="col-md-12">
+                                <small>Posted By: {{ ucfirst($detail->user->fname).' '.ucfirst($detail->user->lname) }}</small>
+                                <small class="float-end"><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($detail->created_at)) }}</small>
+                            </div>
+                            <hr>
                             <div class="col-md-8 col-sm-8">
                                 <div class="detail-desc-caption">
                                     @if($detail->is_approved == 0)
@@ -31,10 +37,11 @@
                                     @endif
                                     <p>{{ $detail->description }}</p>
                                     <ul>
-                                        <li><i class="fa fa-paw"></i> Age: {{ $detail->age }}</li>
-                                        <li><i class="fa fa-paw"></i> Gender: {{ $detail->gender }}</li>
-                                        <li><i class="fa fa-paw"></i> Color: {{ $detail->color }}</li>
-                                        <li><i class="fa fa-paw"></i> Breed: {{ $detail->breed }}</li>
+                                        <li><i class="fa fa-paw"></i> <strong>Age:</strong> {{ $detail->age }}</li>
+                                        <li><i class="fa fa-paw"></i> <strong>Gender:</strong> {{ $detail->gender }}</li>
+                                        <li><i class="fa fa-paw"></i> <strong>Color:</strong> {{ $detail->color }}</li>
+                                        <li><i class="fa fa-paw"></i> <strong>Breed:</strong> {{ $detail->breed }}</li>
+                                        <li><i class="fa fa-paw"></i> <strong>Is Vaccinated?</strong> {{ $detail->is_vaccinated }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -56,9 +63,6 @@
                                             </li>
                                         @endif
                                     </ul>
-
-                                    <small>Posted By: {{ $detail->user->fname.' '.$detail->user->lname }}</small>
-                                    <small class="float-end">Date: {{ date('M d, Y', strtotime($detail->created_at)) }}</small>
                                 </div>
                             </div>
                         </div>

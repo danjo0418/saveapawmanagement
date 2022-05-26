@@ -46,19 +46,19 @@
                                            <option value="lostandfound">Lost and Found</option>
                                        </select>
                                    </div>
-                                   <div class="form-group">
+                                   <div class="form-group mb-2">
                                         <label for="name">Name: </label>
                                         <input id="name" type="text" class="form-control" name="name">
                                    </div>
-                                   <div class="form-group">
+                                   <div class="form-group mb-2">
                                         <label for="breed">Breed: </label>
                                         <input id="breed" type="text" class="form-control" name="breed" required>
                                    </div>
-                                   <div class="form-group">
+                                   <div class="form-group mb-2">
                                         <label for="color">Color: </label>
                                         <input id="color" type="text" class="form-control" name="color" required>
                                    </div>
-                                   <div class="form-group">
+                                   <div class="form-group mb-2">
                                         <label for="gender">Gender: </label>
                                         <select id="gender" class="form-control" name="gender" required>
                                             <option disabled selected>-- Select Gender --</option>
@@ -66,13 +66,17 @@
                                             <option value="female">Female</option>
                                         </select>
                                    </div>
-                                   <div class="form-group">
+                                   <div class="form-group mb-2">
                                         <label for="age">Age: </label>
                                         <input id="age"  type="text" class="form-control" name="age">
                                    </div>
-                                   <div class="form-group mb-3">
+                                   <div class="form-group mb-2">
                                         <label for="description">Description</label>
                                         <textarea id="description" class="form-control" name="description" rows="5"></textarea>
+                                   </div>
+                                   <div class="form-group mb-3">
+                                        <label for="is_vaccinated">Is Vaccinated? </label>
+                                        <input id="is_vaccinated"  type="text" class="form-control" name="is_vaccinated">
                                    </div>
 
                                    <button class="btn btn-warning"><i class="fa fa-paw"></i> Submit</button>

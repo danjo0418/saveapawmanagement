@@ -23,6 +23,7 @@ class CreatePetsTable extends Migration
             $table->enum('gender',['male','female']);
             $table->string('age');
             $table->longText('description');
+            $table->string('is_vaccinated')->nullable();
             $table->longText('filename');
             $table->integer('is_approved')->default(0); // 0 = pendin 1 = approved 2 = declined 3 = deleted
             $table->integer('is_claim')->default(0); // 1 = claim

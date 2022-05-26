@@ -58,11 +58,15 @@
                                         </div>
                                         <h5>{{ ucfirst($claim->pet->name) }}</h5>
                                         <p><strong>Description:</strong> <br/> {{ $claim->pet->description }}</p>
+                                        <p>
+                                            <strong>Is Vaccinated? </strong> <br>
+                                            <i class="fa fa-check-circle text-success"></i> {{ $claim->pet->is_vaccinated }}
+                                        </p>
                                         <ul>
-                                            <li><i class="fa fa-paw"></i> Age: {{ $claim->pet->age }}</li>
-                                            <li><i class="fa fa-paw"></i> Gender:  {{ $claim->pet->gender}}</li>
-                                            <li><i class="fa fa-paw"></i> Color: {{ $claim->pet->color }}</li>
-                                            <li><i class="fa fa-paw"></i> Breed:  {{ $claim->pet->breed }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Age:</strong> {{ $claim->pet->age }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Gender:</strong>  {{ $claim->pet->gender}}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Color:</strong> {{ $claim->pet->color }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Breed:</strong>  {{ $claim->pet->breed }}</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">

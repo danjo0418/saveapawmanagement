@@ -53,7 +53,7 @@
                                 
                                 <div class="name">
                                     <small>
-                                        Posted By: {{ $petdetail->user->fname.' '.$petdetail->user->lname }} <br/>
+                                        Posted By: {{ ucfirst($petdetail->user->fname).' '.ucfirst($petdetail->user->lname) }} <br/>
                                         Date: {{ date('M d, Y', strtotime($petdetail->created_at)) }}
                                     </small>
                                     <h3>Name: {{ $petdetail->name }}</h3>
@@ -72,7 +72,12 @@
 
                                 <p>
                                     <strong>Description:</strong>
-                                    <p>{{ $petdetail->description }}</p>
+                                    <br/>{{ $petdetail->description }}
+                                </p>
+
+                                <p>
+                                    <strong>Is Vaccinated?</strong> <br/>
+                                    <i class="fa fa-check-circle text-success"></i> {{ ucfirst($petdetail->is_vaccinated) }}
                                 </p>
 
                                 <hr>
@@ -183,7 +188,8 @@
                                         @endif
                                     </div>
                                 @else
-                                    <p><a href="{{ URL::to('pets-form') }}" class="btn btn-warning"><i class="fa fa-paw"></i> Add Pet</a></p>
+                                    <p class="text-center mt-3">Note:  Hi !<strong>{{ ucfirst($petdetail->user->fname) }}</strong> <small>you own this post. If you want to post more just click the  button below.</small></p>
+                                    <p class="text-center"><a href="{{ URL::to('pets-form') }}" class="btn btn-warning"><i class="fa fa-paw"></i> Add Pet</a></p>
                                 @endif
                             </div>
                         </div>

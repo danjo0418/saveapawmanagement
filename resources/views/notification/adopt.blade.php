@@ -57,11 +57,15 @@
                                         </div>
                                         <h5>{{ ucfirst($adopt->pet->name) }}</h5>
                                         <p><strong>Description:</strong> <br/> {{ $adopt->pet->description }}</p>
+                                        <p>
+                                            <strong>Is Vaccinated? </strong> <br>
+                                            <i class="fa fa-check-circle text-success"></i> {{ $adopt->pet->is_vaccinated }}
+                                        </p>
                                         <ul>
-                                            <li><i class="fa fa-paw"></i> Age: {{ $adopt->pet->age }}</li>
-                                            <li><i class="fa fa-paw"></i> Gender:  {{ $adopt->pet->gender}}</li>
-                                            <li><i class="fa fa-paw"></i> Color: {{ $adopt->pet->color }}</li>
-                                            <li><i class="fa fa-paw"></i> Breed:  {{ $adopt->pet->breed }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Age:</strong> {{ $adopt->pet->age }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Gender:</strong>  {{ $adopt->pet->gender}}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Color:</strong> {{ $adopt->pet->color }}</li>
+                                            <li><i class="fa fa-paw"></i> <strong>Breed:</strong>  {{ $adopt->pet->breed }}</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">

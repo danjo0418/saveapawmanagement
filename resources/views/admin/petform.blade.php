@@ -14,7 +14,7 @@
     <div class="auto-container mt-5">
         <div class="clearfix">
            <div class="container">
-               <a href="{{ url()->previous() }}" class="text-primary"><i class="fa fa-angle-left"></i> Back to Previous</a>
+               <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Back to Pets Management</a>
 
                 <div class="card">
                     <div class="card-body">
@@ -68,6 +68,10 @@
                                    <div class="form-group mb-3">
                                         <label for="description">Description</label>
                                         <textarea id="description" class="form-control" name="description" rows="5"></textarea>
+                                   </div>
+                                   <div class="form-group mb-3">
+                                        <label for="is_vaccinated">Is Vaccinated? </label>
+                                        <input id="is_vaccinated"  type="text" class="form-control" name="is_vaccinated">
                                    </div>
 
                                    <button class="btn btn-warning"><i class="fa fa-paw"></i> Submit</button>

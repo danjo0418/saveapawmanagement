@@ -44,10 +44,7 @@
                                     <div class="form-group">
                                         <label for="color">Color: </label>
                                         <input id="color" type="text" class="form-control" name="color" value="{{ $detail->color }}" required>
-                                   </div>                           
-                                </div>
-
-                                <div class="col-md-6">
+                                   </div>  
                                    <div class="form-group">
                                         <label for="gender">Gender: </label>
                                         <select id="gender" class="form-control" name="gender" required>
@@ -56,6 +53,11 @@
                                             <option value="female" {{ $detail->gender == 'female' ? 'selected':'' }}>Female</option>
                                         </select>
                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                   
                                    <div class="form-group">
                                         <label for="age">Age: </label>
                                         <input id="age" type="text" class="form-control" name="age" value="{{ $detail->age }}" required>
@@ -64,7 +66,12 @@
                                         <label for="description">Description:</label>
                                         <textarea id="description" class="form-control" name="description" rows="8">{{ $detail->description }}</textarea>
                                    </div>
+                                   <div class="form-group mb-3">
+                                        <label for="is_vaccinated">Is Vaccinated? </label>
+                                        <input id="is_vaccinated"  type="text" class="form-control" value="{{ $detail->is_vaccinated }}" name="is_vaccinated">
+                                   </div>
                                 </div>
+
                                 <div class="col-md-12 mt-4">
                                     <button class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Save</button>
                                 </div>

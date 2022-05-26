@@ -57,7 +57,7 @@
                 @else
                     <div class="text-center">
                         <h1><i class="fa fa-rss"></i></h1>
-                        <h2><strong><a href="" class="btn btn-warning">POST BLOGS</a></strong></h2>
+                        <h2>You haven't posted anything</h2>
                     </div>
                 @endif
 
