@@ -68,9 +68,11 @@
                         <div class="group-title">
                             <h2>Comments</h2>
                         </div>
-                        @if(count($detail->comments) > 0)
+                        <div class="js_comments_wrapper">
+                            
+                        </div>
+                        {{-- @if(count($detail->comments) > 0)
                             @foreach($detail->comments as $comment)
-                                <!--Comment Box-->
                                 <div class="comment-box">
                                     <div class="comment">
                                         <div class="author-thumb">
@@ -90,11 +92,11 @@
                             <div class="text-center">
                                 <p>NO DATA FOUND</p>
                             </div>
-                        @endif
+                        @endif --}}
 
                     </div>
                     <!--End Comments Area-->
-                    
+
                     <!-- Comment Form -->
                     <div class="comment-form">
                         <div class="group-title">
@@ -107,13 +109,13 @@
                                 </div>
                             </div>
                             <div class="col-md-10">
-                                <form method="post" action="{{ URL::to('comment') }}">
-                                    {{ csrf_field() }}
+                                <form id="js-comment-form">
+                                    @csrf
                                     <input type="hidden" value="{{ Auth::user()->id }}" name="userid">
                                     <input type="hidden" value="{{ $detail->id }}" name="blogid">
                                     <div class="row clearfix">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                            <textarea name="message" placeholder="Hi! {{ Auth::user()->fname }}'s you can write your comments here."></textarea>
+                                            <textarea class="js-message" name="message" placeholder="Hi! {{ Auth::user()->fname }}'s you can write your comments here."></textarea>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
                                             <button class="theme-btn btn-style-four" type="submit" name="submit-form">leave
@@ -148,3 +150,68 @@
 
     @include('modal.blog.update')
 @endsection
+
+@section('script')
+    <script>
+
+        function commentsView() {
+
+            let blogid = {{ request()->segment(2) }};
+            let html;
+
+            $.get(BASE_URL+'/comments/'+blogid, function(response) {
+                $.each(response, function(index, data) {
+                    html+="<div class='comment-box'>";
+                        html+="<div class='comment'>";
+                            html+="<div class='author-thumb'>";
+                                html+="<img src='"+BASE_URL+"/asset/images/users/thumb/"+data.owner.profile+"' alt=''>";
+                            html+="</div>";
+                            html+="<div class='comment-inner'>";
+                                html+="<div class='comment-info clearfix'>";
+                                    html+="<strong>"+data.owner.fname+" "+data.owner.lname+"</strong>";
+                                    html+="<div class='comment-time'>"+data.created_at+"</div>";
+                                html+="</div>";
+                                html+="<div class='text'>"+data.message+"</div>";
+                            html+="</div>";
+                        html+="</div>";
+                    html+="</div>";
+                });
+
+                $('.js_comments_wrapper').html(html);
+            });
+        }
+
+        $(document).ready(function(){
+
+            setTimeout(function() { 
+                commentsView();
+            }, 100);
+
+            $('#js-comment-form').on('submit', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: BASE_URL+'/leavecomment',
+                    type: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    success:function(response) {
+                      console.log(response.status);
+
+                        if(response.status == 'success') {
+                            commentsView();
+                            $('.js-message').val('');
+                        }
+                    }
+                });
+            });
+
+
+        });
+
+    </script>
+@endsection
+
+

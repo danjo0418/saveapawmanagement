@@ -32,7 +32,13 @@ class BlogModule
 
 	public function details($setid)
 	{
-		return Blog::with('user','comments.owner')->where('id',$setid)->orderBy('updated_at', 'DESC')->first();
+		// return Blog::with('user','comments.owner')->where('id',$setid)->orderBy('updated_at', 'DESC')->first();
+		return Blog::with('user')->where('id',$setid)->orderBy('updated_at', 'DESC')->first();
+	}
+
+	public function commentJsonView($setBlogId)
+	{
+		return Comment::with('owner')->where('blog_id', $setBlogId)->orderBy('id','DESC')->get();
 	}
 
 	public function comment($data)

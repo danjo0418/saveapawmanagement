@@ -33,19 +33,30 @@ class BlogController extends Controller
 
     public function blogDetails($getid)
     {
+        //return $this->blogmodule->commentJson(3);
          $detail = $this->blogmodule->details($getid);
          return view('blogdetails')->with(compact('detail'));
     }
 
-
-    public function comment()
+     public function commentJson($blogid)
     {
-        $request = request();
-        $data = ['blog_id'=>$request->blogid, 'user_id'=>$request->userid, 'message'=>$request->message];
+        $comments = $this->blogmodule->commentJsonView($blogid);
+        return response()->json($comments);
+    }
 
+
+    public function comment(Request $request)
+    {
+        
+     //   return response()->json(['data' => $request->message]);
+
+        $data = ['blog_id'=>$request->blogid, 'user_id'=>$request->userid, 'message'=>$request->message];
         $create = $this->blogmodule->comment($data);
 
-        return redirect()->back()->with('success', 'Your comments is already added'); 
+        if($create) {
+            return response()->json(['status' => 'success']);
+        }
+
     }
 
     public function form()
