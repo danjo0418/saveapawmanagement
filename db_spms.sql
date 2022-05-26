@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `adopt` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.adopt: ~0 rows (approximately)
+-- Dumping data for table db_spms.adopt: ~1 rows (approximately)
 INSERT INTO `adopt` (`id`, `pet_id`, `user_id`, `no_pet`, `reason`, `id_type`, `id_no`, `filename`, `is_delete`, `created_at`, `updated_at`) VALUES
 	(1, 3, 4, 3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'Drivers License', '123-3341234-3', '1653010365drivers-license-e1527147351417.jpg', 0, '2022-05-19 17:32:46', '2022-05-19 18:52:53');
 
@@ -43,15 +43,20 @@ INSERT INTO `adopt` (`id`, `pet_id`, `user_id`, `no_pet`, `reason`, `id_type`, `
 CREATE TABLE IF NOT EXISTS `blog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `filename` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filename` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.blog: ~0 rows (approximately)
+-- Dumping data for table db_spms.blog: ~4 rows (approximately)
+INSERT INTO `blog` (`id`, `user_id`, `filename`, `title`, `description`, `created_at`, `updated_at`) VALUES
+	(1, 3, 'news-3.jpg', 'Some toughly useful much walking before', 'Forwardly echidna outside tiger split thanks far vibrantly gosh hence pang. Oh while frog urgent a circa connected atro us some neutral inside elusive by more the jeez orca tarantula meadowlark barring that on clinically oh ouch far jeezpa much grizzly amidst in grabbed wallaby well expediently much giraffe constantly and forbade a one yet belligerent the robust cried goodness more sedulously vulgar yet however.', '2022-05-20 03:03:02', '2022-05-20 03:03:02'),
+	(2, 2, 'news-1.jpg', 'Acute yellow re-laid less or affirmatively cats', 'Forwardly echidna outside tiger split thanks far vibrantly gosh hence pang. Oh while frog urgent a circa connected atro us some neutral inside elusive by more the jeez orca tarantula meadowlark barring that on clinically oh ouch far jeezpa much grizzly amidst in grabbed wallaby well expediently much giraffe constantly and forbade a one yet belligerent the robust cried goodness more sedulously vulgar yet however.', '2022-05-25 03:03:03', '2022-05-25 03:03:03'),
+	(3, 1, 'news-2.jpg', 'X Acute yellow re-laid less or affirmatively cats', 'Forwardly echidna outside tiger split thanks far vibrantly gosh hence pang. Oh while frog urgent a circa connected atro us some neutral inside elusive by more the jeez orca tarantula meadowlark barring that on clinically oh ouch far jeezpa much grizzly amidst in grabbed wallaby well expediently much giraffe constantly and forbade a one yet belligerent the robust cried goodness more sedulously vulgar yet however.', '2022-05-25 03:03:23', '2022-05-25 03:03:23'),
+	(4, 3, '1653534644pp.jpg', 'Lorem ipsum dolor xxx', 'xxx Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi', '2022-05-25 18:36:19', '2022-05-25 19:10:44');
 
 -- Dumping structure for table db_spms.claim
 CREATE TABLE IF NOT EXISTS `claim` (
@@ -68,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `claim` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.claim: ~0 rows (approximately)
+-- Dumping data for table db_spms.claim: ~1 rows (approximately)
 INSERT INTO `claim` (`id`, `pet_id`, `user_id`, `filename`, `witness_email`, `witness_name`, `witness_contact`, `is_delete`, `created_at`, `updated_at`) VALUES
 	(1, 3, 3, '1653009565bulldog.jpg', 'richmon.d@gmail.com', 'Richmond Dee', '0944567831', 0, '2022-05-19 17:19:25', '2022-05-19 18:57:58');
 
@@ -81,9 +86,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.comments: ~0 rows (approximately)
+-- Dumping data for table db_spms.comments: ~2 rows (approximately)
+INSERT INTO `comments` (`id`, `blog_id`, `user_id`, `message`, `created_at`, `updated_at`) VALUES
+	(7, 2, 1, 'check', '2022-05-26 01:40:13', '2022-05-26 01:40:13'),
+	(8, 4, 1, 'test', '2022-05-26 01:42:25', '2022-05-26 01:42:25');
 
 -- Dumping structure for table db_spms.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -126,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `pets` (
   `gender` enum('male','female') COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_vaccinated` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `filename` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_approved` int(11) NOT NULL DEFAULT 0,
   `is_claim` int(11) NOT NULL DEFAULT 0,
@@ -133,26 +142,16 @@ CREATE TABLE IF NOT EXISTS `pets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.pets: ~4 rows (approximately)
-INSERT INTO `pets` (`id`, `user_id`, `status`, `name`, `breed`, `color`, `gender`, `age`, `description`, `filename`, `is_approved`, `is_claim`, `is_adapt`, `created_at`, `updated_at`) VALUES
-	(1, 3, 'adopt', 'Chiroo', 'Labrador', 'White', 'male', '8 months', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore', '1653004891labrador.jpg', 0, 0, 0, '2022-05-19 16:01:32', '2022-05-19 18:54:21'),
-	(2, 4, 'adopt', 'Ollie', 'Poodle', 'White/Brown', 'male', '7 months', 'laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '1653005178dogssss.jpg', 1, 0, 0, '2022-05-19 16:06:18', '2022-05-19 17:16:15'),
-	(3, 2, 'lostandfound', 'Max', 'Bulldog', 'Brown', 'male', '1 year', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '1653005258bulldog.jpg', 1, 0, 0, '2022-05-19 16:07:38', '2022-05-19 18:57:58'),
-	(4, 2, 'adopt', 'Lorem', 'Boxer', 'White', 'female', '9 months', 'gna aliqua. Ut enim ad eprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '1653005342Afghan_dog_-_cropped.jpg', 1, 0, 0, '2022-05-19 16:09:02', '2022-05-19 18:48:25');
-
--- Dumping structure for table db_spms.reacts
-CREATE TABLE IF NOT EXISTS `reacts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `blog_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table db_spms.reacts: ~0 rows (approximately)
+-- Dumping data for table db_spms.pets: ~6 rows (approximately)
+INSERT INTO `pets` (`id`, `user_id`, `status`, `name`, `breed`, `color`, `gender`, `age`, `description`, `is_vaccinated`, `filename`, `is_approved`, `is_claim`, `is_adapt`, `created_at`, `updated_at`) VALUES
+	(1, 3, 'adopt', 'Chiroo', 'Labrador', 'White', 'male', '8 months', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore', 'N/A', '1653004891labrador.jpg', 1, 0, 0, '2022-05-19 16:01:32', '2022-05-25 22:06:34'),
+	(2, 4, 'adopt', 'Ollie', 'Poodle', 'White/Brown', 'male', '7 months', 'laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '3 months', '1653005178dogssss.jpg', 1, 0, 0, '2022-05-19 16:06:18', '2022-05-25 18:10:19'),
+	(3, 2, 'lostandfound', 'Max', 'Bulldog', 'Brown', 'male', '1 year', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '1 month', '1653005258bulldog.jpg', 1, 0, 0, '2022-05-19 16:07:38', '2022-05-19 18:57:58'),
+	(4, 2, 'adopt', 'Lorem', 'Boxer', 'White', 'female', '9 months', 'gna aliqua. Ut enim ad eprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '3 months', '1653005342Afghan_dog_-_cropped.jpg', 1, 0, 0, '2022-05-19 16:09:02', '2022-05-19 18:48:25'),
+	(5, 4, 'adopt', 'Test', 'test', 'test', 'male', '4 months', 'rure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu', '1 month', '1653529445pngkit_cool-png_330367.png', 1, 0, 0, '2022-05-25 17:44:05', '2022-05-25 22:06:24'),
+	(6, 1, 'adopt', 'Test', 'Test', 'test', 'male', '4 months', 'dsadsadsad', 'N/A', '1653531167pp.jpg', 1, 0, 0, '2022-05-25 18:12:47', '2022-05-25 18:12:47');
 
 -- Dumping structure for table db_spms.role
 CREATE TABLE IF NOT EXISTS `role` (
@@ -191,15 +190,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.users: ~5 rows (approximately)
+-- Dumping data for table db_spms.users: ~6 rows (approximately)
 INSERT INTO `users` (`id`, `role_id`, `email`, `password`, `fname`, `mname`, `lname`, `address`, `gender`, `birthday`, `contact`, `own_pet`, `status`, `is_delete`, `profile`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 1, 'saveapawmanagement@gmail.com', '$2y$10$EUrQklecqgF/Ue0ykfAkAeI8ln6AGFP.QTx0JP3Z7yxSqFadmjgEC', 'Save', 'A', 'Paw', 'Cordova, Cebu', 'male', '1999-01-01', '0912345678', 'no', 'active', 0, '1653015523maxresdefault.jpg', 'SupNzZJsIHoaawt6Vmd3KqhgRQYZjG2Yse1GwxMp1sGSBqOHCPHosZj6ca2o', '2022-05-19 15:01:52', '2022-05-19 18:58:43'),
-	(2, 2, 'cel.savapaw@gmail.com', '$2y$10$EUrQklecqgF/Ue0ykfAkAeI8ln6AGFP.QTx0JP3Z7yxSqFadmjgEC', 'Cel', 'Kota', 'Gonzaga', 'Babag, Lapu-Lapu City', 'male', '1995-01-01', '0912345678', 'no', 'active', 0, 'avatar.png', 'Ubkw4aPCU3iPUEE0Fz2hG0LP9esk61X5r5Qje8NPIMTtjpjCFgu0mjhWvER7', '2022-05-19 15:03:58', '2022-05-19 07:32:23'),
-	(3, 3, 'renan@gmail.com', '$2y$10$QoRx1sUOw0NwwXYPa8R3.e/Wisfzari.UpekatijvMbRRcUAepTv2', 'Renan', 'Escabas', 'Nobleza', 'Poblacion, Cordova, Cebu', 'male', '1998-12-09', '0912321425', 'yes', 'active', 0, 'avatar.png', 'tSAnBHcFqtVyhgS2KqMQPjtkPLO9fV8qn4tWaqF6FF81sVyIOh75ATOyvcAe', '2022-05-19 07:04:55', '2022-05-19 07:04:55'),
-	(4, 3, 'charles@gmail.com', '$2y$10$8kOMtAYRixakJSWQIy/.Me7S91K7r6eeQ5X8XgjphjNVf08rq2876', 'Charles x', 'Pino x', 'Lagnason x', 'Mactan, Lapu-lapu, City x', 'male', '2001-01-01', '09184422699 x', 'yes', 'active', 0, 'avatar.png', 'FPASYIGoLXesyqymQhjEGbIcuPOMWuiEFGHkRQBp7q84TrxvIfd5pZDVgXQ3', '2022-05-19 07:08:26', '2022-05-19 17:33:15'),
-	(5, 2, 'yaslyn.saveapaw@gmail.com', '$2y$10$g1zQoAp1LflmgomeSx1kEexH.cw3wm0tCgVYE2GwsophTxFU/SfY.', 'Yaslyn', 'Tulda', 'Amoin', 'Gun-ob, Lapu-lapu City', 'female', '1995-01-01', '09234456781', 'yes', 'active', 0, 'avatar.png', NULL, '2022-05-19 07:25:49', '2022-05-19 07:25:49');
+	(1, 1, 'saveapawmanagement@gmail.com', '$2y$10$EUrQklecqgF/Ue0ykfAkAeI8ln6AGFP.QTx0JP3Z7yxSqFadmjgEC', 'Save', 'A', 'Paw', 'Cordova, Cebu', 'male', '1999-01-01', '0912345678', 'no', 'active', 0, '1653546498elizabeth.png', 'HQmvtETSP8GRU8Hx5E1c7DtEJkKfX3N3sIbU2r4zydPd6ixRqTtgSwpDqWyK', '2022-05-19 15:01:52', '2022-05-25 22:28:18'),
+	(2, 2, 'cel.savapaw@gmail.com', '$2y$10$EUrQklecqgF/Ue0ykfAkAeI8ln6AGFP.QTx0JP3Z7yxSqFadmjgEC', 'Cel', 'Kota', 'Gonzaga', 'Babag, Lapu-Lapu City', 'male', '1995-01-01', '0912345678', 'no', 'active', 0, 'avatar.png', 'ST3U8QrXdLt3dTHiPVbJbZDqZxLiW6YDdg7jxlp7WQYAjNAhxEJJAV5wTuM9', '2022-05-19 15:03:58', '2022-05-19 07:32:23'),
+	(3, 3, 'reo@gmail.com', '$2y$10$QoRx1sUOw0NwwXYPa8R3.e/Wisfzari.UpekatijvMbRRcUAepTv2', 'Reo', 'Lino', 'Pagara', 'Poblacion, Cordova, Cebu', 'male', '1998-12-09', '0912321425', 'yes', 'active', 0, 'avatar.png', 'oRZs86kCfTPfSkYlsFzAxXIcUyD2Kl0CxG8URIHoLMUMGnGDt08HxAxd2s7n', '2022-05-19 07:04:55', '2022-05-19 07:04:55'),
+	(4, 3, 'charles@gmail.com', '$2y$10$8kOMtAYRixakJSWQIy/.Me7S91K7r6eeQ5X8XgjphjNVf08rq2876', 'Charles', 'Pino', 'Lagnason', 'Mactan, Lapu-lapu, City x', 'male', '2001-01-01', '09184422699 x', 'yes', 'active', 0, '1653485218pngkit_cool-png_330367.png', 'LmBzdysefqvkA3Q5GsFQforcHg8qjo6ku0UBAwkt936OStwRYZhpn3yvjqjL', '2022-05-19 07:08:26', '2022-05-25 18:03:49'),
+	(5, 2, 'yaslyn.saveapaw@gmail.com', '$2y$10$g1zQoAp1LflmgomeSx1kEexH.cw3wm0tCgVYE2GwsophTxFU/SfY.', 'Yaslyn', 'Tulda', 'Amoin', 'Gun-ob, Lapu-lapu City', 'female', '1995-01-01', '09234456781', 'yes', 'active', 0, 'avatar.png', NULL, '2022-05-19 07:25:49', '2022-05-19 07:25:49'),
+	(6, 2, 'test123@gmail.com', '$2y$10$QjZ.12Ms/1s8QTJiKD8jGepAHRZV0NRza7Hggn9f.cpIQTa.nJMZK', 'test123', 'Pino', 'test', '729 Fairmount Avenue Suite 100', 'male', '1993-01-01', '0912345677', 'yes', 'active', 0, 'avatar.png', NULL, '2022-05-25 13:31:28', '2022-05-25 13:31:28');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
