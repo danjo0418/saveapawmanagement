@@ -32,7 +32,7 @@
                                 <a href="{{ route('login') }}" class="theme-btn btn-style-one ml-02">Login</a>
                                 <a href="{{ route('register') }}" class="theme-btn btn-style-one">Register</a>
                             @else
-                                <p class="p-1">Welcome! {{ Auth::user()->fname }}</p>
+                                <p class="p-1">Welcome! <strong>{{ Auth::user()->fname }}</strong></p>
                             @endguest
                         </div>
                     </div>

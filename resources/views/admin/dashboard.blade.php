@@ -65,7 +65,7 @@
         <h2 class="mt-5">Latest Pending Pets</h2>
         <div class="container">
             @foreach($pendings as $pet)
-                <a href="" class="item-click">
+                <a href="{{ URL::to('admin/pet-detail/'.$pet->id) }}" class="item-click">
                     <article>
                         <div class="brows-job-list">
                             <div class="row">

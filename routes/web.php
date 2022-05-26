@@ -78,6 +78,9 @@ Route::group(['middleware' => 'auth'], function () {
     // script route
     Route::get('comments/{blogid}', 'BlogController@commentView');
     Route::post('leavecomment', 'BlogController@leaveComment');
+    //Route::get('removecomment/{id}', 'BlogController@removeComment');
+
+    Route::get('removeComment/{commentid}', 'BlogController@removeComment');
 });
 
 

@@ -45,6 +45,8 @@ font-family: 'Kaushan Script', sans-serif;*/
 ====================================================================
 
  ***/
+
+
 .myblogs.news-block-two.col-lg-12 {
     margin-bottom: 20px !important;
 }
@@ -5880,8 +5882,8 @@ ul.petdetails li:before {
 
 .sidebar-page-container .comments-area .comment {
     position: relative;
-    font-size: 14px;
-    padding: 0px 0px 0px 110px;
+        font-size: 15px;
+    padding: 2px 0px 0px 78px;
 }
 
 .sidebar-page-container .comments-area .comment .comment-inner {
@@ -5930,7 +5932,7 @@ ul.petdetails li:before {
 .sidebar-page-container .comments-area .comment-info {
     color: #222222;
     line-height: 24px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -5949,8 +5951,7 @@ ul.petdetails li:before {
 
 .sidebar-page-container .comments-area .comment-box .text {
     color: #444444;
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: 15px;
     margin-bottom: 0px;
     line-height: 1.9em;
 }

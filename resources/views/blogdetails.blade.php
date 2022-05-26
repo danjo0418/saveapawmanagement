@@ -86,8 +86,8 @@
                                 </div>
                             </div>
                             <div class="col-md-10">
-                                <form id="js-comment-form">
-                                    @csrf
+                                <form id="js-comment-form" method="post">
+                                    {{ csrf_field() }}
                                     <input type="hidden" value="{{ Auth::user()->id }}" name="userid">
                                     <input type="hidden" value="{{ $detail->id }}" name="blogid">
                                     <div class="row clearfix">
@@ -126,13 +126,27 @@
     </div>
 
     @include('modal.blog.update')
+    @include('modal.comment.remove')
 @endsection
 
 @section('script')
     <script>
 
-        function commentsView() {
+        function dateFormat($date)
+        {
+            const monthname = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            const d =  new Date($date);
 
+            const month = monthname[d.getMonth()];
+            const day = d.getDate();
+            const year = d.getFullYear();
+
+            return month+' '+day+', '+year;
+        }
+
+        function commentsView() {
+     
+            let owner = {{ Auth::user()->id }};
             let blogid = {{ request()->segment(2) }};
             let ui = '';
 
@@ -145,26 +159,54 @@
                                 ui+="<img src='"+BASE_URL+"/asset/images/users/thumb/"+data.owner.profile+"' alt=''>";
                             ui+="</div>";
                             ui+="<div class='comment-inner'>";
-                                ui+="<div class='comment-info clearfix'>";
-                                    ui+="<strong>"+data.owner.fname+" "+data.owner.lname+"</strong>";
-                                    ui+="<div class='comment-time'>"+data.created_at+"</div>";
-                                ui+="</div>";
+                                    ui+="<div class='comment-info clearfix'>";
+                                        ui+="<strong>"+data.owner.fname+" "+data.owner.lname+"</strong>";
+                                        ui+="<div class='comment-time'>"+dateFormat(data.created_at)+"</div>";
+                                    ui+="</div>";
                                 ui+="<div class='text'>"+data.message+"</div>";
+                                ui+="<div class='comment-link'>";
+                                        if(data.user_id == owner) {
+                                            //ui+="<a href='"+BASE_URL+"/removecomment/"+data.id+"'><small>Remove</small></a>";
+    
+                                           ui+="<a href='javascript:void(0)' class='jsRemove' id='"+data.id+"'><small>Remove</small></a>";
+
+                                        }
+                                ui+="</div>";
                             ui+="</div>";
                         ui+="</div>";
                     ui+="</div>";
                 });
 
                 $('.js-comments-wrapper').html(ui);
-            });
-        }
 
-        $(document).ready(function(){
+
+                $('.jsRemove').on('click',function(e) {
+                    e.preventDefault();
+
+                    let commentid = $(this).attr('id');
+
+                    $.get(BASE_URL+'/removeComment/'+commentid, function(response) {
+                        console.log(response.status);
+
+                        if(response.status == 'success') {
+                            commentsView();
+                        }
+                    });
+                    
+                });
+
+            });
+
+       }
+
+
+        $(document).ready(function() {
 
             setTimeout(function() { 
                 commentsView();
             }, 100);
 
+            //Add Comment
             $('#js-comment-form').on('submit', function(e) {
                 e.preventDefault();
 
@@ -176,8 +218,6 @@
                     cache: false,
                     processData:false,
                     success:function(response) {
-                      console.log(response.status);
-
                         if(response.status == 'success') {
                             commentsView();
                             $('.js-message').val('');
@@ -186,7 +226,7 @@
                 });
             });
 
-
+    
         });
 
     </script>

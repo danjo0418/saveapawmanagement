@@ -33,7 +33,6 @@ class BlogController extends Controller
 
     public function blogDetails($getid)
     {
-        //return $this->blogmodule->commentJson(3);
          $detail = $this->blogmodule->details($getid);
          return view('blogdetails')->with(compact('detail'));
     }
@@ -49,6 +48,16 @@ class BlogController extends Controller
         }
 
     }
+
+    public function removeComment($commentid)
+    {
+        $delete = $this->blogmodule->deleteComment($commentid);
+
+        if($delete) {
+            return response()->json(['status' => 'success']);
+        }
+    }
+
 
      public function commentView($blogid)
     {

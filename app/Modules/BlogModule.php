@@ -38,12 +38,17 @@ class BlogModule
 
 	public function commentJsonView($setBlogId)
 	{
-		return Comment::with('owner')->where('blog_id', $setBlogId)->orderBy('id','DESC')->get();
+		return Comment::with('owner')->where('blog_id', $setBlogId)->orderBy('id','ASC')->get();
 	}
 
 	public function comment($data)
 	{
 		return Comment::create($data);
+	}
+
+	public function deleteComment($setid)
+	{
+		return DB::table('comments')->where('id', $setid)->delete();
 	}
 
 
