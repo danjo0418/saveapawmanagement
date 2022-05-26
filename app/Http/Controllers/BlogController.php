@@ -38,18 +38,9 @@ class BlogController extends Controller
          return view('blogdetails')->with(compact('detail'));
     }
 
-     public function commentJson($blogid)
-    {
-        $comments = $this->blogmodule->commentJsonView($blogid);
-        return response()->json($comments);
-    }
-
-
-    public function comment(Request $request)
+    public function leaveComment(Request $request)
     {
         
-     //   return response()->json(['data' => $request->message]);
-
         $data = ['blog_id'=>$request->blogid, 'user_id'=>$request->userid, 'message'=>$request->message];
         $create = $this->blogmodule->comment($data);
 
@@ -58,6 +49,13 @@ class BlogController extends Controller
         }
 
     }
+
+     public function commentView($blogid)
+    {
+        $comments = $this->blogmodule->commentJsonView($blogid);
+        return response()->json($comments);
+    }
+
 
     public function form()
     {

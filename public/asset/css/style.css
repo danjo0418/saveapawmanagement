@@ -6001,7 +6001,7 @@ ul.petdetails li:before {
     padding: 10px 25px;
     border: 1px solid #dddddd;
     height: 50px;
-    color: #444444;
+    color: #000;
     font-weight: 400;
     background: #ffffff;
     border-radius: 50px;
@@ -6022,7 +6022,7 @@ ul.petdetails li:before {
     width: 100%;
     line-height: 26px;
     padding: 10px 25px;
-    color: #d6d6d6;
+    color: #000;
     border: 1px solid #dddddd;
     height: 125px;
     font-weight: 300;

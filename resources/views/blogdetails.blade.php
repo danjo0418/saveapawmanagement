@@ -68,32 +68,9 @@
                         <div class="group-title">
                             <h2>Comments</h2>
                         </div>
-                        <div class="js_comments_wrapper">
+                        <div class="js-comments-wrapper">
                             
                         </div>
-                        {{-- @if(count($detail->comments) > 0)
-                            @foreach($detail->comments as $comment)
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb">
-                                            <img src="{{ asset('asset/images/users/thumb/'.$comment->owner->profile) }}" alt="">
-                                        </div>
-                                        <div class="comment-inner">
-                                            <div class="comment-info clearfix">
-                                                <strong>{{ ucfirst($comment->owner->fname).' '.ucfirst($comment->owner->lname) }}</strong>
-                                                <div class="comment-time">{{ date('M d, Y', strtotime($comment->created_at)) }}  </div>
-                                            </div>
-                                            <div class="text">{{ $comment->message }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="text-center">
-                                <p>NO DATA FOUND</p>
-                            </div>
-                        @endif --}}
-
                     </div>
                     <!--End Comments Area-->
 
@@ -157,27 +134,28 @@
         function commentsView() {
 
             let blogid = {{ request()->segment(2) }};
-            let html;
+            let ui = '';
 
             $.get(BASE_URL+'/comments/'+blogid, function(response) {
-                $.each(response, function(index, data) {
-                    html+="<div class='comment-box'>";
-                        html+="<div class='comment'>";
-                            html+="<div class='author-thumb'>";
-                                html+="<img src='"+BASE_URL+"/asset/images/users/thumb/"+data.owner.profile+"' alt=''>";
-                            html+="</div>";
-                            html+="<div class='comment-inner'>";
-                                html+="<div class='comment-info clearfix'>";
-                                    html+="<strong>"+data.owner.fname+" "+data.owner.lname+"</strong>";
-                                    html+="<div class='comment-time'>"+data.created_at+"</div>";
-                                html+="</div>";
-                                html+="<div class='text'>"+data.message+"</div>";
-                            html+="</div>";
-                        html+="</div>";
-                    html+="</div>";
+
+                $.each(response, function(index,data) {
+                    ui+="<div class='comment-box'>";
+                        ui+="<div class='comment'>";
+                            ui+="<div class='author-thumb'>";
+                                ui+="<img src='"+BASE_URL+"/asset/images/users/thumb/"+data.owner.profile+"' alt=''>";
+                            ui+="</div>";
+                            ui+="<div class='comment-inner'>";
+                                ui+="<div class='comment-info clearfix'>";
+                                    ui+="<strong>"+data.owner.fname+" "+data.owner.lname+"</strong>";
+                                    ui+="<div class='comment-time'>"+data.created_at+"</div>";
+                                ui+="</div>";
+                                ui+="<div class='text'>"+data.message+"</div>";
+                            ui+="</div>";
+                        ui+="</div>";
+                    ui+="</div>";
                 });
 
-                $('.js_comments_wrapper').html(html);
+                $('.js-comments-wrapper').html(ui);
             });
         }
 
