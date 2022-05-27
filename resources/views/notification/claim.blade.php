@@ -143,9 +143,11 @@
         function getDataA(data) {
             $('.js-claimid').val(data.id);
             $('.js-petid').val(data.pet_id);
+            $('.js-receiver').val(data.user_id);
         }
         function getDataD(data) {
             $('.js-claimid').val(data.id);
+            $('.js-receiver').val(data.user_id);
         }
     </script>
 @endsection

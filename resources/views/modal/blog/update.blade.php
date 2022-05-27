@@ -12,7 +12,7 @@
             <div class="modal-body mb-3">
                 <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="{{ URL::to('blogUpdate') }}">
                    {{ csrf_field() }}
-                   <input type="text" value="{{ $detail->id }}" name="blogid">
+                   <input type="hidden" value="{{ $detail->id }}" name="blogid">
                    <div class="row">
                        <div class="col-md-5 text-center">
                            <img id="imagePreview" class="img-fluid mt-3" src="{{ asset('asset/images/blogs/'.$detail->filename) }}" />

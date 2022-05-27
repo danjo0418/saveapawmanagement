@@ -15,6 +15,7 @@
                     {{  csrf_field() }}
                     <input type="hidden" class="js-adoptid" name="adoptid">
                     <input type="hidden" class=" js-petid" name="petid">
+                    <input type="hidden" class="js-receiver" name="petadopt">
                     <button class="btn btn-success">Approved</button>
                 </form>
             </div>

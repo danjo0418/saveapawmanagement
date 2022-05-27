@@ -15,6 +15,7 @@
                     {{  csrf_field() }}
                     <input type="hidden" value="{{ $detail->id }}" name="petid">
                     <input type="hidden" value="1" name="is_approved">
+                    <input type="hidden" value="{{ $detail->user_id }}" name="petowner">
                     <button class="btn btn-success">Approved</button>
                 </form>
             </div>

@@ -1,4 +1,4 @@
-<!--Main Footer-->
+
 <footer class="main-footer">
     <div class="auto-container">
         @guest()
@@ -15,25 +15,25 @@
                                         <div class="logo">
                                             <a href="index.html"><img src="images/footer-logo.png" alt="" /></a>
                                         </div>
-                                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        <!-- <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur.</div>
-                                        <ul class="social-icon-two">
+                                        cillum dolore eu fugiat nulla pariatur.</div> -->
+                                        <!-- <ul class="social-icon-two">
                                             <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
                                             <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!--big column-->
-                        <div class="big-column col-md-3 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
+                        <!-- <div class="big-column col-md-3 col-sm-12 col-xs-12">
+                            <div class="row clearfix"> -->
                                 <!--Footer Column-->
-                                <div class="footer-column col-xs-12">
+                                <!-- <div class="footer-column col-xs-12">
                                     <div class="footer-widget links-widget">
                                         <h2>Web Links</h2>
                                         <ul class="links">
@@ -52,13 +52,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!--big column-->
-                        <div class="big-column col-md-3 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
+                        <!-- <div class="big-column col-md-3 col-sm-12 col-xs-12">
+                            <div class="row clearfix"> -->
                                 <!--Footer Column-->
-                                <div class="footer-column col-xs-12">
+                                <!-- <div class="footer-column col-xs-12">
                                     <div class="footer-widget info-widget">
                                         <h2>Get In Touch</h2>
                                         <ul>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             @endif
         @endguest
         <div class="footer-bottom m5-3">
@@ -87,4 +87,4 @@
         </div>
     </div>
 </footer>
-<!--End Main Footer-->
+<!--End Main Footer

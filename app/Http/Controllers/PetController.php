@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Modules\PetModule;
 use App\Modules\AdoptModule;
 use App\Modules\ClaimModule;
+use App\Modules\NotificationsModule;
 
 
 use Carbon\Carbon;
@@ -17,13 +18,15 @@ class PetController extends Controller
 {
     protected $petmodule;
     protected $adoptmodule;
+    protected $notificationsmodule;
 
     //USERS
-    public function __construct(PetModule $pet, AdoptModule $adopt, ClaimModule $claim)
+    public function __construct(PetModule $pet, AdoptModule $adopt, ClaimModule $claim, NotificationsModule $notif)
     {
         $this->petmodule = $pet;
         $this->adoptmodule = $adopt;
         $this->claimmodule = $claim;
+        $this->notificationsmodule = $notif;
     }
 
 
@@ -190,12 +193,26 @@ class PetController extends Controller
         $request = request();
 
         $data = ['id' => $request->petid, 'is_approved' => $request->is_approved];
-        $approve = $this->petmodule->update($request->petid, $data);
+        $query = $this->petmodule->update($request->petid, $data);
 
-        if($approve) {
+        if($query) {
 
-            if($request->is_approved == 1) return redirect('admin/pets-management')->with('success', "Pet is approved and visible on website for viewing.");
-            else return redirect('admin/pets-management')->with('error', "Pet is declined, Due to unreliable information.");
+
+            
+
+
+            if($request->is_approved == 1) {
+
+                $notif = ['type'=>'p_approved', 'url_id'=>$request->petid, 'receiver_id'=>$request->petowner];
+                $this->notificationsmodule->create($notif);
+                return redirect('admin/pets-management')->with('success', "Pet is approved and visible on website for viewing.");
+
+            } else {
+
+                $notif = ['type'=>'p_declined', 'url_id'=>$request->petid, 'receiver_id'=>$request->petowner];
+                $this->notificationsmodule->create($notif);
+                return redirect('admin/pets-management')->with('error', "Pet is declined, Due to unreliable information.");
+            }
         }
 
     }

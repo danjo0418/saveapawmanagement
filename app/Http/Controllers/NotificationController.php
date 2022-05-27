@@ -7,6 +7,7 @@ use App\Modules\UserModule;
 use App\Modules\PetModule;
 use App\Modules\AdoptModule;
 use App\Modules\ClaimModule;
+use App\Modules\NotificationsModule;
 
 use Auth;
 
@@ -17,13 +18,16 @@ class NotificationController extends Controller
     protected $petmodule;
     protected $adoptmodule;
     protected $claimmodule;
+    protected $notificationsmodule;
 
-    public function __construct(UserModule $user, PetModule $pet, AdoptModule $adopt, ClaimModule $claim) 
+
+    public function __construct(UserModule $user, PetModule $pet, AdoptModule $adopt, ClaimModule $claim, NotificationsModule $notif) 
     {
         $this->usermodule = $user;
         $this->petmodule = $pet;
         $this->adoptmodule = $adopt;
         $this->claimmodule = $claim;
+        $this->notificationsmodule = $notif;
     }
 
     public function claimPets()
@@ -41,6 +45,9 @@ class NotificationController extends Controller
 
         if($claim) {
 
+            $notif = ['type'=>'claim_approved', 'receiver_id'=>$request->petclaimer];
+            $this->notificationsmodule->create($notif);
+
             $newdata = ['is_claim' => 1];
             $this->petmodule->update($request->petid, $newdata);
 
@@ -56,6 +63,10 @@ class NotificationController extends Controller
         $claim = $this->claimmodule->update($request->claimid, $data);
 
         if($claim) {
+
+            $notif = ['type'=>'claim_declined', 'receiver_id'=>$request->petclaimer];
+            $this->notificationsmodule->create($notif);
+
            return redirect()->back()->with('error', 'Claim Request is declined'); 
         }
     }
@@ -75,6 +86,9 @@ class NotificationController extends Controller
 
         if($adopt) {
 
+            $notif = ['type'=>'adopt_approved', 'receiver_id'=>$request->petadopt];
+            $this->notificationsmodule->create($notif);
+
             $newdata = ['is_adapt' => 1];
             $this->petmodule->update($request->petid, $newdata);
 
@@ -91,6 +105,10 @@ class NotificationController extends Controller
         $adopt = $this->adoptmodule->update($request->adoptid, $data);
 
         if($adopt) {
+
+            $notif = ['type'=>'adopt_declined', 'receiver_id'=>$request->petadopt];
+            $this->notificationsmodule->create($notif);
+            
            return redirect()->back()->with('error', 'Adopt Request is declined'); 
         }
     }

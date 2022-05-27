@@ -6,16 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Modules\BlogModule;
+use App\Modules\NotificationsModule;
 use Image;
+
 
 class BlogController extends Controller
 {   
 
     protected $blogmodule;
+    protected $notificationsmodule;
 
-    public function __construct(BlogModule $blog)
+    public function __construct(BlogModule $blog, NotificationsModule $notif)
     {
         $this->blogmodule = $blog;
+        $this->notificationsmodule = $notif;
     }
 
     public function myBlogs()
@@ -39,11 +43,20 @@ class BlogController extends Controller
 
     public function leaveComment(Request $request)
     {
+
         
         $data = ['blog_id'=>$request->blogid, 'user_id'=>$request->userid, 'message'=>$request->message];
         $create = $this->blogmodule->comment($data);
-
+ 
         if($create) {
+
+            // for notifications
+
+           $notify = ['type'=> 'comments', 'url_id'=>$request->blogid, 'receiver_id'=>$request->blogowner, 'comment_id'=> $request->userid];
+
+           $this->notificationsmodule->create($notify);
+
+
             return response()->json(['status' => 'success']);
         }
 

@@ -137,9 +137,11 @@
         function getDataA(data) {
             $('.js-adoptid').val(data.id);
             $('.js-petid').val(data.pet_id);
+            $('.js-receiver').val(data.user_id);
         }
         function getDataD(data) {
             $('.js-adoptid').val(data.id);
+            $('.js-receiver').val(data.user_id);
         }
     </script>
 @endsection

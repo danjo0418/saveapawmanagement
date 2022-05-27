@@ -46,6 +46,14 @@ font-family: 'Kaushan Script', sans-serif;*/
 
  ***/
 
+span.badge.badge-sm.js-blinker {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    top: 0px;
+    right: 0px;
+}
+
 
 .myblogs.news-block-two.col-lg-12 {
     margin-bottom: 20px !important;
@@ -726,7 +734,7 @@ img {
 
 .main-header .sticky-header .main-menu .navigation>li>a {
     color: #222222;
-    padding: 20px 0px;
+    /*padding: 20px 0px;*/
     line-height: 30px;
     font-size: 16px;
     font-weight: 700;
@@ -2879,12 +2887,12 @@ img {
 
 .links-widget .links li a:before {
     position: absolute;
-    content: '\f119';
+    content: '\f1b0';
     left: 0px;
     top: 4px;
     color: #cccccc;
     line-height: 1em;
-    font-family: "Flaticon";
+    font-family: "FontAwesome";
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
@@ -8241,7 +8249,7 @@ ul.detail-footer-social li a i {
 
 .what-we-offer .single-what-we-offer i.fa {
     color: #e7470c;
-    font-size: 46px;
+    font-size: 36px;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
 }
@@ -14509,4 +14517,45 @@ ul, p {
     transition: .5s;
     border-radius: 50%;
     opacity: 1;
+}
+
+.notif-body {
+    display: flex;
+    align-items: center;
+}
+
+.notif-wrap {
+    min-width: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 600px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.notif-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.notification-bell .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: #e7470c;
+    color: white;
+}
+
+.notification-bell {
+    color: white;
+    text-decoration: none;
+    padding: 0px 5px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notif-body p {
+    line-height: 1.1;
+    padding-left: 5px;
 }

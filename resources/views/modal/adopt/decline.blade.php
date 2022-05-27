@@ -14,6 +14,7 @@
                 <form method="POST" action="{{ URL::to('adoptDeclined') }}">
                     {{  csrf_field() }}
                     <input type="hidden" class="js-adoptid" name="adoptid">
+                    <input type="hidden" class="js-receiver" name="petadopt">
                     <button class="btn btn-danger">Declined</button>
                 </form>
             </div>

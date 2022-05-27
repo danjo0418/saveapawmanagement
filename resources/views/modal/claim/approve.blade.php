@@ -15,6 +15,7 @@
                     {{  csrf_field() }}
                     <input type="hidden" class="js-claimid" name="claimid">
                     <input type="hidden" class=" js-petid" name="petid">
+                    <input type="hidden" class="js-receiver" name="petclaimer">
                     <button class="btn btn-success">Approved</button>
                 </form>
             </div>

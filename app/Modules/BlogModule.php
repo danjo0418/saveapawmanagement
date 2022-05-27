@@ -51,5 +51,9 @@ class BlogModule
 		return DB::table('comments')->where('id', $setid)->delete();
 	}
 
+	public function countBlog()
+	{
+		return Blog::count();
+	}
 
 }

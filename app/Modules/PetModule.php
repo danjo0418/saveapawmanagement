@@ -15,7 +15,7 @@ class PetModule
 
 	public function adopt()
 	{
-		return Pet::with('user')->where('status','adopt')->where('is_approved',1)->where('is_adapt', '0')->orderBy('updated_at','desc')->paginate(9);
+		return Pet::with('user')->where('status','adopt')->where('is_approved',1)->where('is_adopt', '0')->orderBy('updated_at','desc')->paginate(9);
 	}
 
 	public function lostAndFound()
@@ -32,7 +32,7 @@ class PetModule
 	{
 		$request = request();
 
-		$query = Pet::with('user')->where('is_approved',1)->where('is_adapt',0)->where('is_claim',0);
+		$query = Pet::with('user')->where('is_approved',1)->where('is_adopt',0)->where('is_claim',0);
 
 		if($request->has('status')) $query->where('status', $request->get('status'));
 		else $query;

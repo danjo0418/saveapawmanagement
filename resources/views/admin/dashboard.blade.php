@@ -24,7 +24,7 @@
                             <div class="icon-box">
                                 <span class="icon fa fa-rss"></span>
                             </div>
-                            <h2>0</h2>
+                            <h2>{{ $blogs }}</h2>
                             <div class="text">Blogs Posted</div>
                         </div>
                     </a>

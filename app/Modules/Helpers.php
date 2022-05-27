@@ -6,6 +6,7 @@ use App\Claim;
 use App\Pet;
 use App\User;
 use App\Comment;
+use App\Notifications;
 use Auth;
 
 Class Helpers 
@@ -28,5 +29,10 @@ Class Helpers
 	public static function countComments($setBlogId)
 	{
 		return Comment::where('blog_id', $setBlogId)->count();
+	}
+
+	public static function notifications()
+	{
+		return Notifications::with('receiver','identifier')->where('receiver_id', Auth::user()->id)->orderBy('id','DESC')->get();
 	}
 }

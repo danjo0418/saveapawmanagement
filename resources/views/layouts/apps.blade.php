@@ -50,7 +50,7 @@
     </div>
 
     <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" data-bs-target="html"><span class="icon flaticon-pawprint-1"></span></div>
+    <div class="scroll-to-top scroll-to-target" data-bs-target="html"><span class="fa fa-paw"></span></div>
 
     
     <script src="{{ asset('asset/js/jquery.js') }}"></script>
@@ -83,6 +83,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
            $('ul.pagination li').addClass('page-item');
+
+            setInterval(function() { 
+                $('.js-blinker').fadeIn(); 
+                $('.js-blinker').fadeOut(); 
+            }, 100);
         });
 
         //Image Previewer

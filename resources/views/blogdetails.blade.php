@@ -88,6 +88,7 @@
                             <div class="col-md-10">
                                 <form id="js-comment-form" method="post">
                                     {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $detail->user->id }}" name="blogowner">
                                     <input type="hidden" value="{{ Auth::user()->id }}" name="userid">
                                     <input type="hidden" value="{{ $detail->id }}" name="blogid">
                                     <div class="row clearfix">

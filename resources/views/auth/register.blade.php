@@ -98,12 +98,12 @@
 
                                                         <div class="mb-2 form-group">
                                                             <label for="birthday" class="control-label">Birthday:</label>
-                                                            <input id="birthday" type="date" class="form-control" name="birthday" placeholder="Birthday"  required>
+                                                            <input id="birthday" type="date" class="form-control" name="birthday" placeholder="Birthdate"  required>
                                                         </div>
 
                                                         <div class="mb-2 form-group">
                                                             <label for="contact" class="control-label">Contact No.:</label>
-                                                            <input id="contact" minlength="6" type="text" class="form-control" name="contact" placeholder="+63" required autofocus>
+                                                            <input type="contact"id="contact" minlength="6" maxlength="11" type="text" class="form-control" name="contact" placeholder="+63" required autofocus>
                                                         </div>
 
                                                         <div class="mb-2 form-group">
