@@ -52,10 +52,14 @@
                                 @endif
                                 
                                 <div class="name">
-                                    <small>
-                                        Posted By: {{ ucfirst($petdetail->user->fname).' '.ucfirst($petdetail->user->lname) }} <br/>
-                                        Date: {{ date('M d, Y', strtotime($petdetail->created_at)) }}
+                                    <small class="float-end">
+                                        Date: {{ date('M d, Y', strtotime($petdetail->created_at)) }}<br/>
                                     </small>
+                                    <small>Posted By:</small>
+                                    <p class="m-0" style="font-size:18px;"><strong>{{ ucfirst($petdetail->user->fname).' '.ucfirst($petdetail->user->lname) }}</strong></p>
+                                    <p class="m-0">{{ $petdetail->user->email }}</p>
+                                    <p class="m-0">{{ $petdetail->user->contact }}</p>
+                                    <hr/>
                                     <h3>Name: {{ $petdetail->name }}</h3>
                                 </div>
                                 @if($petdetail->status == 'adopt')

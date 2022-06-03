@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('user.index');
 });
 
+Route::get('adopt', 'PetController@listOfAdopt');
+Route::get('lost-and-found', 'PetController@listOfLostAndFound');
+
 Route::post('newlogin','UserController@newLogin');
 Route::post('newregister', 'UserController@newRegister');
 
@@ -25,8 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //users view
     Route::get('about-us', 'UserController@about');
-    Route::get('adopt', 'PetController@listOfAdopt');
-    Route::get('lost-and-found', 'PetController@listOfLostAndFound');
     Route::get('pet/details/{id}', 'PetController@petDetails');
     Route::get('pets-form', 'PetController@userPetForm');
     Route::get('mypets', 'PetController@myPets');

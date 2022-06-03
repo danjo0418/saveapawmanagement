@@ -49,10 +49,9 @@ class UserController extends Controller
         } else  return redirect()->back()->with('invalid', 'These credentials do not match our records.'); 
     }
 
-    public function newRegister()
+    public function newRegister(Request $request)
     {
-        $request = request();
-
+  
         $data = [ 'role_id' => '3',
                   'email' => $request->email,
                   'password' => Hash::make($request->password),
@@ -67,6 +66,8 @@ class UserController extends Controller
                   'status' => 'active',
                   'profile' => 'avatar.png'];
 
+        //return response()->json(['status' => $request->email]);
+
         $emailValidation = $this->usermodule->emailValidataion($request->email);
 
         if(!is_object($emailValidation)) {
@@ -76,12 +77,12 @@ class UserController extends Controller
                 $create = $this->usermodule->create($data);
 
                 if($create) {
-                    return redirect()->back()->with('success', 'Credential was successfully registered.'); 
+                    return response()->json(['status' => 'success']);
                 }
 
-            } else return redirect()->back()->with('confirm', 'Password does not match'); 
+            } else return response()->json(['status' => 'pass_notmatch']);
 
-        } else return redirect()->back()->with('email', 'Email is already use. Please provide other email'); 
+        } else return response()->json(['status' => 'invalid_email']);
     }
 
     public function about()

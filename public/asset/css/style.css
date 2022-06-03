@@ -46,6 +46,7 @@ font-family: 'Kaushan Script', sans-serif;*/
 
  ***/
 
+
 span.badge.badge-sm.js-blinker {
     width: 10px;
     height: 10px;
@@ -6291,8 +6292,12 @@ ul.petdetails li:before {
 /*  Register and login Pages   ||-----------*/
 
 .page-signin .main-body {
-    max-width: 480px;
+    max-width: 500px;
     margin: 10px auto;
+}
+
+.page-signin .register-body {
+    max-width: 700px !important;
 }
 
 .page-signin .body-inner {

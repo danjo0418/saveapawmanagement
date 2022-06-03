@@ -16,12 +16,10 @@
 
 
 -- Dumping database structure for db_spms
-DROP DATABASE IF EXISTS `db_spms`;
 CREATE DATABASE IF NOT EXISTS `db_spms` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `db_spms`;
 
 -- Dumping structure for table db_spms.adopt
-DROP TABLE IF EXISTS `adopt`;
 CREATE TABLE IF NOT EXISTS `adopt` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pet_id` int(11) NOT NULL,
@@ -42,7 +40,6 @@ INSERT INTO `adopt` (`id`, `pet_id`, `user_id`, `no_pet`, `reason`, `id_type`, `
 	(1, 3, 4, 3, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor', 'Drivers License', '123-3341234-3', '1653010365drivers-license-e1527147351417.jpg', 0, '2022-05-19 17:32:46', '2022-05-27 07:03:02');
 
 -- Dumping structure for table db_spms.blog
-DROP TABLE IF EXISTS `blog`;
 CREATE TABLE IF NOT EXISTS `blog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -64,7 +61,6 @@ INSERT INTO `blog` (`id`, `user_id`, `filename`, `title`, `description`, `create
 	(6, 11, '1653618998cat2.jpg', 'Queen Cat', 'This is Doja. She likes to just sit all day and care about nothing. She\'s the real queen.', '2022-05-26 18:36:39', '2022-05-26 18:36:39');
 
 -- Dumping structure for table db_spms.claim
-DROP TABLE IF EXISTS `claim`;
 CREATE TABLE IF NOT EXISTS `claim` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pet_id` int(11) NOT NULL,
@@ -85,7 +81,6 @@ INSERT INTO `claim` (`id`, `pet_id`, `user_id`, `filename`, `witness_email`, `wi
 	(2, 7, 7, '1653629815ShihTzuBreed.jpg', 'maria@gmail.com', 'maria panas', '092657352', 1, '2022-05-26 21:36:55', '2022-05-26 21:37:29');
 
 -- Dumping structure for table db_spms.comments
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `blog_id` int(11) NOT NULL,
@@ -94,9 +89,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db_spms.comments: ~14 rows (approximately)
+-- Dumping data for table db_spms.comments: ~15 rows (approximately)
 INSERT INTO `comments` (`id`, `blog_id`, `user_id`, `message`, `created_at`, `updated_at`) VALUES
 	(7, 2, 1, 'check', '2022-05-26 01:40:13', '2022-05-26 01:40:13'),
 	(8, 4, 1, 'test', '2022-05-26 01:42:25', '2022-05-26 01:42:25'),
@@ -111,10 +106,10 @@ INSERT INTO `comments` (`id`, `blog_id`, `user_id`, `message`, `created_at`, `up
 	(18, 6, 11, 'check', '2022-05-27 05:31:22', '2022-05-27 05:31:22'),
 	(19, 6, 15, 'ehsdasdsa', '2022-05-27 05:34:22', '2022-05-27 05:34:22'),
 	(20, 6, 11, 'aw', '2022-05-27 05:35:26', '2022-05-27 05:35:26'),
-	(27, 6, 4, 'aw', '2022-05-27 07:27:43', '2022-05-27 07:27:43');
+	(27, 6, 4, 'aw', '2022-05-27 07:27:43', '2022-05-27 07:27:43'),
+	(28, 3, 1, 'hellow', '2022-05-27 07:49:27', '2022-05-27 07:49:27');
 
 -- Dumping structure for table db_spms.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -135,7 +130,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(18, '2022_05_17_043646_create_reacts_table', 1);
 
 -- Dumping structure for table db_spms.notifications
-DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE IF NOT EXISTS `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` enum('p_approved','p_declined','adopt_approved','adopt_declined','claim_approved','claim_declined','comments') DEFAULT NULL,
@@ -145,20 +139,11 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_At` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_spms.notifications: ~7 rows (approximately)
-INSERT INTO `notifications` (`id`, `type`, `url_id`, `receiver_id`, `comment_id`, `created_at`, `updated_At`) VALUES
-	(1, 'p_approved', 5, 4, NULL, '2022-05-27 06:33:51', '2022-05-27 06:33:51'),
-	(2, 'p_declined', 2, 4, NULL, '2022-05-27 06:33:58', '2022-05-27 06:33:58'),
-	(4, 'claim_approved', NULL, 3, NULL, '2022-05-27 06:47:43', '2022-05-27 06:47:43'),
-	(5, 'claim_declined', NULL, 3, NULL, '2022-05-27 06:49:23', '2022-05-27 06:49:23'),
-	(7, 'adopt_approved', NULL, 4, NULL, '2022-05-27 07:02:41', '2022-05-27 07:02:41'),
-	(8, 'adopt_declined', NULL, 4, NULL, '2022-05-27 07:03:02', '2022-05-27 07:03:02'),
-	(9, 'comments', 6, 11, 4, '2022-05-27 07:27:43', '2022-05-27 07:27:43');
+-- Dumping data for table db_spms.notifications: ~0 rows (approximately)
 
 -- Dumping structure for table db_spms.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -169,7 +154,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Dumping data for table db_spms.password_resets: ~0 rows (approximately)
 
 -- Dumping structure for table db_spms.pets
-DROP TABLE IF EXISTS `pets`;
 CREATE TABLE IF NOT EXISTS `pets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -202,7 +186,6 @@ INSERT INTO `pets` (`id`, `user_id`, `status`, `name`, `breed`, `color`, `gender
 	(8, 16, 'adopt', 'Pretty', 'Bengal Cat', 'BlacknOrange', 'female', '2', 'Qualifications for adopting:\r\n-food\r\n-love\r\n-care\r\n-more food', 'Yes, Vaccinated !', '1653644663adopt20.jpg', 0, 0, 0, '2022-05-27 01:44:24', '2022-05-27 01:44:24');
 
 -- Dumping structure for table db_spms.role
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -218,7 +201,6 @@ INSERT INTO `role` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'user', '2022-05-19 14:59:53', '2022-05-19 14:59:53');
 
 -- Dumping structure for table db_spms.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,

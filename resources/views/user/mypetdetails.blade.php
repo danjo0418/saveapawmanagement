@@ -19,8 +19,11 @@
                         <div class="row"></div>
                         <div class="row bottom-mrg">
                             <div class="col-md-12">
-                                <small>Posted By: {{ ucfirst($detail->user->fname).' '.ucfirst($detail->user->lname) }}</small>
-                                <small class="float-end"><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($detail->created_at)) }}</small>
+                                <small>
+                                    Posted By: <br/>
+                                    {{ ucfirst($detail->user->fname).' '.ucfirst($detail->user->lname) }}
+                                </small>
+                                <small class="float-end"><i class="fa fa-calendar"></i> {{ date('M d, Y', strtotime($detail->created_at)) }}</small>    
                             </div>
                             <hr>
                             <div class="col-md-8 col-sm-8">

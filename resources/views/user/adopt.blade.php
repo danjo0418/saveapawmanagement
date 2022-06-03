@@ -49,15 +49,21 @@
                                             <li><i class="fas fa-paw"></i> <strong>Color:</strong> {{ $pet->color }}</li>
                                         </ul>
                                         <div class="button wow fadeInUp">
-                                            @if($pet->user_id == Auth::user()->id)
-                                                <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
-                                                    Read More <i class="fas fa-paw"></i>
-                                                </a>
-                                            @else
-                                                <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
+                                            @guest
+                                                <a href="{{ URL::to('register') }}" class="btn main" title="contact">
                                                     Adopt Me <i class="fas fa-paw"></i>
                                                 </a>
-                                            @endif
+                                            @else
+                                                @if($pet->user_id == Auth::user()->id)
+                                                    <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
+                                                        Read More <i class="fas fa-paw"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ URL::to('pet/details/'.$pet->id) }}" class="btn main" title="contact">
+                                                        Adopt Me <i class="fas fa-paw"></i>
+                                                    </a>
+                                                @endif
+                                            @endguest
                                         </div>
                                     </div>
                                 </div>

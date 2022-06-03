@@ -61,6 +61,14 @@
                             <ul class="navigation clearfix">
                                 @guest
                                     <li><a href="{{ URL::to('/') }}">Home</a></li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0)">Pets <i class="fa fa-caret-down"></i></a>
+                                        <ul>
+                                            <li><a href="{{ URL::to('adopt') }}">Adopt</a></li>
+                                            <li><a href="{{ URL::to('lost-and-found') }}">Lost and Found</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ URL::to('blogs') }}">Blogs</a></li>
                                 @else
                                     @if(Auth::user()->role_id == 3)
                                         <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
@@ -184,14 +192,14 @@
                                                         </span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="{{ URL::to('admin/claim-pets') }}">
                                                         Claim Pets 
                                                         <span class="badge badge-danger">
                                                             {{ App\Modules\Helpers::countClaim() }}
                                                         </span>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 <li>
                                                     <a href="{{ URL::to('admin/adopt-pets') }}">
                                                         Adopt Pets 
@@ -306,6 +314,7 @@
                                             @if(Auth::user()->role_id == 3)
                                                 <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                             @endif
+                                            <li><a href="{{ URL::to('') }}"><span class="fa fa-check"></span> Claim Request</a></li>
                                             <li><a href="{{ URL::to('myblogs') }}"><span class="fa fa-rss"></span> My Blogs</a></li>
                                             <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
@@ -339,6 +348,14 @@
                         <ul class="navigation clearfix">
                             @guest
                                 <li><a href="{{ URL::to('/') }}">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="javascript:void(0)">Pets <i class="fa fa-caret-down"></i></a>
+                                    <ul>
+                                        <li><a href="{{ URL::to('adopt') }}">Adopt</a></li>
+                                        <li><a href="{{ URL::to('lost-and-found') }}">Lost and Found</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ URL::to('blogs') }}">Blogs</a></li>
                             @else
                                 @if(Auth::user()->role_id == 3)
                                     <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
@@ -462,14 +479,14 @@
                                                     </span>
                                                 </a>
                                             </li>
-                                            <li>
+                                            {{-- <li>
                                                 <a href="{{ URL::to('admin/claim-pets') }}">
                                                     Claim Pets 
                                                     <span class="badge badge-danger">
                                                         {{ App\Modules\Helpers::countClaim() }}
                                                     </span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <a href="{{ URL::to('admin/adopt-pets') }}">
                                                     Adopt Pets 
@@ -584,6 +601,7 @@
                                         @if(Auth::user()->role_id == 3)
                                             <li><a href="{{ URL::to('mypets') }}"><span class="fa fa-paw"></span> My Pets</a></li>
                                         @endif
+                                        <li><a href="{{ URL::to('') }}"><span class="fa fa-check"></span> Claim Request</a></li>
                                         <li><a href="{{ URL::to('myblogs') }}"><span class="fa fa-rss"></span> My Blogs</a></li>
                                         <li><a href="{{ URL::to('profile') }}"><span class="fa fa-user"></span> Profile</a></li>
                                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out"></span> Logout</a></li>
