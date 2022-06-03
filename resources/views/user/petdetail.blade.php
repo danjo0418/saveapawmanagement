@@ -159,7 +159,7 @@
 
                                                         <input type="hidden" value="{{ Auth::user()->id }}" name="userid">
                                                         <input type="hidden" value="{{ $petdetail->id }}" name="petid">
-
+                                                        <input type="hidden" value="{{ $petdetail->user->id }}" name="petowner">
                                                         <div class="text-center m-3">
                                                             <img id="imagePreview" src="{{ asset('asset/images/lost/placeholder.png') }}" style="width: 400px; height: 300px; object-fit: cover;"/>
                                                         </div>

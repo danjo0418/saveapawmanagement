@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Claim extends Model
 {
     protected $table = 'claim';
-    protected $fillable = ['pet_id','user_id','filename','witness_email','witness_name','witness_contact','is_delete'];
+    protected $fillable = ['pet_id','pet_owner','user_id','filename','witness_email','witness_name','witness_contact','is_delete'];
 
     public function user()
     {

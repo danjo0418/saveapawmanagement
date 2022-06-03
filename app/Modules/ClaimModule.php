@@ -13,7 +13,7 @@ class ClaimModule
 		return Claim::create($data);
 	}
 
-	public function claim()
+	public function claim($petOwner)
 	{
 
 		$request = request();
@@ -24,7 +24,7 @@ class ClaimModule
 			$query->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), "=", $request->get('filter'));
 		} else $query;
 
-		return $query->orderBy('updated_at', 'DESC')->paginate(10);
+		return $query->where('pet_owner', $petOwner)->orderBy('updated_at', 'DESC')->paginate(10);
 	}
 
 	public function update($setid, $data)

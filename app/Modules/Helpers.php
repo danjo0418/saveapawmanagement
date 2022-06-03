@@ -18,7 +18,7 @@ Class Helpers
 
 	public static function countClaim()
 	{
-		return Claim::where('is_delete', 0)->count();
+		return Claim::where('pet_owner', Auth::user()->id)->where('is_delete', 0)->count();
 	}
 
 	public static function countUnapprovedPet()

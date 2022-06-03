@@ -10,13 +10,13 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <p>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Suscipit optio quam doloribus sunt quis fugit impedit pariatur cumque praesentium a itaque quaerat earum amet ducimus quisquam laboriosam similique, deserunt consectetur!</p>
+                <p>Pet was already claimed</p>
                 <form method="POST" action="{{ URL::to('claimApproved') }}">
                     {{  csrf_field() }}
                     <input type="hidden" class="js-claimid" name="claimid">
                     <input type="hidden" class=" js-petid" name="petid">
                     <input type="hidden" class="js-receiver" name="petclaimer">
-                    <button class="btn btn-success">Approved</button>
+                    <button class="btn btn-success">Submit</button>
                 </form>
             </div>
 

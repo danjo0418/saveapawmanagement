@@ -32,7 +32,7 @@ class NotificationController extends Controller
 
     public function claimPets()
     {
-        $claims = $this->claimmodule->claim();
+        $claims = $this->claimmodule->claim(Auth::user()->id);
         return view('notification.claim')->with(compact('claims'));
     }
 
@@ -52,22 +52,6 @@ class NotificationController extends Controller
             $this->petmodule->update($request->petid, $newdata);
 
            return redirect()->back()->with('success', 'Claim Request is already approved'); 
-        }
-    }
-
-    public function claimDeclined()
-    {
-        $request = request();
-        $data = ['is_delete' => 2 ];
-
-        $claim = $this->claimmodule->update($request->claimid, $data);
-
-        if($claim) {
-
-            $notif = ['type'=>'claim_declined', 'receiver_id'=>$request->petclaimer];
-            $this->notificationsmodule->create($notif);
-
-           return redirect()->back()->with('error', 'Claim Request is declined'); 
         }
     }
 

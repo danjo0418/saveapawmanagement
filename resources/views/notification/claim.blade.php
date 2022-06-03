@@ -14,20 +14,11 @@
     <!--End Page Title-->
 
     <div class="auto-container mt-5">
-        <a href="{{ URL::to('admin/pets-management') }}" class="text-primary"><i class="fa fa-angle-left"></i> Go to Pets Management</a>
-
         <section class="buttons mt-3">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        {{-- <div class="col-md-5">
-                            <form class="form-inline">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Search by user request" name="q">
-                                    <button class="btn btn-outline-secondary" id="button-addon1"><i class="fa fa-search"></i></button>
-                                </div>
-                            </form>
-                        </div> --}}
+
                     </div>
                     <div class="col-lg-3">
                         <form class="form-inline">
@@ -113,8 +104,7 @@
 
 
                                             <div class="mt-10">
-                                                <a href="javascript:void(0)" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#claimApproved" onclick="getDataA({{ $claim }})"><i class="fa fa-check"></i> Approved</a>
-                                                <a href="javascript:void(0)" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#claimDeclined" onclick="getDataD({{ $claim }})">Declined</a>
+                                                <a href="javascript:void(0)" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#claimApproved" onclick="getDataA({{ $claim }})"><i class="fa fa-check"></i> Claimed</a>
                                             </div>
                                         </div>
                                     </div>
@@ -136,17 +126,12 @@
         </section>
     </div>
     @include('modal.claim.approve')
-    @include('modal.claim.decline')
 @endsection
 @section('script')
     <script>
         function getDataA(data) {
             $('.js-claimid').val(data.id);
             $('.js-petid').val(data.pet_id);
-            $('.js-receiver').val(data.user_id);
-        }
-        function getDataD(data) {
-            $('.js-claimid').val(data.id);
             $('.js-receiver').val(data.user_id);
         }
     </script>

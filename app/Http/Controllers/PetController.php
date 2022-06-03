@@ -264,6 +264,7 @@ class PetController extends Controller
         $filextension =  $file->clientExtension();
 
         $data = ['pet_id' => $request->petid,
+                 'pet_owner'=> $request->petowner,
                  'user_id' => $request->userid,
                  'filename' => $filename,
                  'witness_email' => $request->witness_email,
