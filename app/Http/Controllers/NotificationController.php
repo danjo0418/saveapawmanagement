@@ -45,7 +45,7 @@ class NotificationController extends Controller
 
         if($claim) {
 
-            $notif = ['type'=>'claim_approved', 'receiver_id'=>$request->petclaimer];
+            $notif = ['type'=>'claim_request', 'receiver_id'=>$request->petclaimer];
             $this->notificationsmodule->create($notif);
 
             $newdata = ['is_claim' => 1];
