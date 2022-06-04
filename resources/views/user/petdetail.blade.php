@@ -147,7 +147,7 @@
 
                                             @if(session('success'))
                                                 <div class="alert alert-success text-center">
-                                                   Hi! <strong>{{ ucfirst(Auth::user()->fname) }}</strong> Your request was already submitted. The administrator will contact you using your email or phone number. Please keep updated, thank you.
+                                                   Hi! <strong>{{ ucfirst(Auth::user()->fname) }}</strong> Your request was already submitted. Just wait for the user who posted this pet to contact you.
                                                 </div>
                                             @endif
 

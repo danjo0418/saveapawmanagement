@@ -15,7 +15,7 @@ class CreateTableNotififcation extends Migration
     {
         Schema::table('notifications', function (Blueprint $table) {
             $table->increments();
-            $table->enum('type',['p_approved','p_declined','adopt_approved','adopt_declined','claim_approved','claim_declined','comments']);
+            $table->enum('type',['p_approved','p_declined','adopt_approved','adopt_declined','claim_request','comments']);
             $table->integer('url_id');
             $table->integer('receiver_id');
             $table->integer('c_id');

@@ -285,6 +285,9 @@ class PetController extends Controller
 
             if($create) {
 
+                $notif = ['type'=>'claim_request', 'receiver_id'=>$request->petowner];
+                $this->notificationsmodule->create($notif);
+
                  return redirect()->back()->with('success', "Successfully submitted.");
 
             } else return redirect()->back()->with('error', 'YAWAAAAA');

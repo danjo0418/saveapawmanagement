@@ -20,21 +20,11 @@
                             </p>
                         </div>
                     </a>
-                @elseif($notif->type === 'claim_approved')
-                    <a href="javascript:void(0)" style="pointer-events: none;">
+                @elseif($notif->type === 'claim_request')
+                    <a href="{{ URL::to('claim-request') }}">
                         <div class="notif-body">
                             <p class="ml-5">
-                                Hi! <strong>{{ ucfirst(Auth::user()->fname) }}</strong> Your Claim Requst is approved.
-                                <br/><small style="font-size:10px;">{{ date('M d, Y h:i A', strtotime($notif->created_at)) }}</small>
-                            </p>
-                        </div>
-                    </a>
-
-                @elseif($notif->type === 'claim_declined')
-                    <a href="javascript:void(0)" style="pointer-events: none;">
-                        <div class="notif-body">
-                            <p class="ml-5">
-                                Hi! <strong>{{ ucfirst(Auth::user()->fname) }}</strong> Your Claim Requst was declined.
+                                Hi! <strong>{{ ucfirst(Auth::user()->fname) }}</strong> you have a claim request on your post.
                                 <br/><small style="font-size:10px;">{{ date('M d, Y h:i A', strtotime($notif->created_at)) }}</small>
                             </p>
                         </div>
